@@ -1,0 +1,6 @@
+import Seo from '../components/ui/Seo.jsx';
+import Accordion from '../components/ui/Accordion.jsx';
+import { FAQ_ITEMS } from '../components/home/faqData.js';
+import { Link } from 'react-router-dom';
+import HeroBackground from '../components/ui/HeroBackground.jsx';
+export default function FAQ() { return <><Seo title="Frequently Asked Questions" description="Answers to common InnoSpeak Global learning and admissions questions." path="/faq"/><section className="relative overflow-hidden bg-navy-gradient text-white"><HeroBackground/><div className="container-premium relative z-10 py-20"><p className="font-body text-xs font-bold uppercase tracking-[0.22em] text-gold-300">Help Centre</p><h1 className="mt-4 font-display text-4xl font-bold sm:text-5xl">Frequently Asked Questions</h1><p className="mt-4 max-w-2xl font-body leading-7 text-white/70">Find answers about programmes, delivery, certificates, applications and learning.</p></div></section><section className="container-premium max-w-4xl py-14"><div className="rounded-3xl border border-navy-100 bg-white px-6 py-3 shadow-sm sm:px-10"><Accordion items={FAQ_ITEMS}/></div><div className="mt-8 flex flex-wrap gap-3"><Link to="/contact" className="btn-gold text-sm">Contact Us</Link><Link to="/apply" className="btn-outline text-sm">Apply Now</Link></div></section></>; }

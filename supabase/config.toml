@@ -1,0 +1,14 @@
+[functions.create-student]
+verify_jwt = true
+
+[functions.send-admission-email]
+verify_jwt = true
+
+[functions.tutor-chat]
+verify_jwt = true
+
+[functions.mpesa-pay]
+verify_jwt = true
+
+[functions.paypal-pay]
+verify_jwt = true

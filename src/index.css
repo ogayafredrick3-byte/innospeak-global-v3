@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-paper text-navy font-sans antialiased;
+  }
+
+  /* Respect reduced-motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Accessible focus ring for keyboard navigation */
+  :focus-visible {
+    @apply outline-none ring-2 ring-gold ring-offset-2 ring-offset-paper;
+  }
+}
+
+@layer components {
+  /* Centered content container bound to Tailwind container config */
+  .container-px {
+    @apply mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16;
+  }
+
+  /* Skip link for screen readers */
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100]
+           focus:rounded-lg focus:bg-navy focus:px-5 focus:py-3 focus:text-sm focus:font-medium
+           focus:text-paper;
+  }
+}
+
+/* Print styles for certificate documents */
+@media print {
+  body {
+    background: white !important;
+  }
+
+  /* Hide everything except the certificate when printing */
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Show only the printable certificate area */
+  .certificate-print-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Ensure certificate colors print correctly */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Remove shadows and borders that don't print well */
+  .shadow-premium,
+  .shadow-premium-lg {
+    box-shadow: none !important;
+  }
+}

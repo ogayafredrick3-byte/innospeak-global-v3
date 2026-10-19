@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy-900: #001f3f;
+  --gold-500: #d4a017;
+  --cream: #f8fafc;
+}
+
+@layer base {
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-gold-500;
+  }
+
+  body {
+    @apply bg-cream font-sans text-navy-900 antialiased;
+  }
+}
+
+@layer components {
+  .container-premium {
+    @apply mx-auto max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .skip-link {
+    @apply fixed left-4 top-4 z-[100] -translate-y-20 rounded-lg bg-white px-4 py-3 font-body text-sm font-bold text-navy-900 shadow-premium transition-transform focus:translate-y-0;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full bg-gold-500/10 px-4 py-1.5 font-body text-xs font-semibold uppercase tracking-wider text-gold-700;
+  }
+
+  .btn-gold {
+  @apply inline-flex items-center justify-center gap-2
+  rounded-2xl
+  bg-gold-gradient
+  px-8 py-4
+  font-body
+  text-sm
+  font-bold
+  text-navy-900
+  shadow-gold
+  transition-all
+  duration-300
+  hover:-translate-y-1
+  hover:shadow-premium-lg
+  hover:brightness-110
+  active:translate-y-0;
+}
+
+
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-2
+  rounded-2xl
+  border-2
+  border-navy-900
+  bg-white
+  px-8 py-4
+  font-body
+  text-sm
+  font-bold
+  text-navy-900
+  transition-all
+  duration-300
+  hover:-translate-y-1
+  hover:bg-navy-900
+  hover:text-white
+  hover:shadow-lg
+  active:translate-y-0;
+}
+
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2
+  rounded-2xl
+  px-6 py-3
+  font-body
+  text-sm
+  font-semibold
+  text-navy-700
+  transition-all
+  duration-300
+  hover:bg-navy-50
+  hover:text-navy-900;
+}
+
+  .card-premium {
+    @apply rounded-2xl border border-navy-100 bg-white shadow-premium;
+  }
+
+  .glass {
+    @apply rounded-2xl border border-white/20 bg-white/80 shadow-glass backdrop-blur-md;
+  }
+
+  .text-gradient-gold {
+    @apply bg-gold-gradient bg-clip-text text-transparent;
+  }
+}
+
+@keyframes trusted-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
