@@ -47,3 +47,12 @@ Review date: 2026-10-19
 ## Critical architecture rule
 
 The public catalogue is the source of truth for course identity and display metadata. Supabase is the source of truth for live course availability, enrolments, learning content, assessment state, progress and certificates. A catalogue flag alone must never grant access to LMS lessons. The database must enforce enrolment and ownership, and the interface must handle backend errors without pretending a learner has been enrolled.
+
+
+## Tutor-authored lesson content (2026-10-20)
+
+- Teaching notes are not bundled into the application; tutors create and upload lesson materials.
+- The rich-text editor initializes lesson content once per lesson rather than replacing the editor HTML on every keystroke, preserving normal caret/editing behavior.
+- Lesson draft/publish validation checks the title, rejects unsafe media URLs, and requires meaningful content, media, a practical activity, or a saved resource before publishing.
+- Resource forms validate external links and prevent saving while a file upload is still running.
+- These are source-level safeguards. Confirm storage bucket permissions, role-based access, and end-to-end upload/publication after Supabase is configured in staging.

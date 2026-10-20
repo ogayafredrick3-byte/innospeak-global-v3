@@ -29,7 +29,7 @@ export default function Certification({ course }) {
             <SectionHeading
               eyebrow="Certification"
               title="What You Will Receive"
-              subtitle="On successful completion of this course, you receive a complete credential package — issued and verifiable through InnoSpeak Global."
+              subtitle="Credential eligibility, completion criteria, any applicable fee and verification availability depend on the course rules and configured credential system. An InnoSpeak completion record is not, by itself, a claim of external accreditation."
             />
           </div>
 

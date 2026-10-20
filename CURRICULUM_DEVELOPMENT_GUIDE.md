@@ -40,3 +40,12 @@ Engineering, electrical, electronics, health, laboratory, machinery and other sa
 - External accreditation: a separate claim requiring evidence from the relevant authority.
 - Self-paced enrolment: open for published catalogue courses through the configured LMS/payment flow.
 - Scheduled cohort: separate offering with its own confirmed delivery arrangements.
+
+## Automated quality screening
+
+Run `npm run audit:curriculum` to generate:
+
+- `docs/CURRICULUM_QUALITY_AUDIT.md` — aggregate findings and the highest-priority review queue.
+- `docs/CURRICULUM_QUALITY_REVIEW_QUEUE.csv` — one row per course, with screening flags and metrics for planning course-by-course review.
+
+The audit is a prioritisation aid, not a substitute for subject-expert review. It flags short course descriptions, repeated generic learning activities, default prerequisites, safety-sensitive topics that lack obvious safety language, and assessment totals that do not equal 100. Do not treat an absence of flags as proof of academic accuracy or accreditation.

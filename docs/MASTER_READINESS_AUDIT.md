@@ -110,3 +110,22 @@ The source-tree version of `supabase/migrations/20260829080000_reset_lms_tables_
 ## Not yet verified
 
 A clean production Vite build could not be completed because dependency installation timed out in this environment. No migration was applied to the live Supabase project, and no real payment-provider round trip, browser E2E suite, live RLS penetration test or deployment was verified. The project is improved and better guarded, but must not be described as production-certified until those checks pass in the actual deployment environment.
+
+## Frontend refinement pass — 2026-10-19
+
+### Completed in this pass
+- Added pathway-specific career directions for course detail pages that do not yet have course-specific career records. The UI now describes these as possible skill applications, not guaranteed jobs. Existing course-specific career data remains higher priority.
+- Kept learner reviews empty unless real reviews exist; no testimonials or ratings are fabricated to fill page sections.
+- Corrected certification section copy so it does not promise a complete, verifiable credential package before the credential workflow has been validated. It now explains that eligibility, fees and verification depend on course rules and the configured credential system, and avoids implying external accreditation.
+- Added tests covering career-direction coverage across the 368-course catalogue and ensuring the fallback is pathway-aware.
+
+### Verification status
+- `npm test`: passed after the refinement (see current test output).
+- `npm run audit:project`: passed after this frontend-only refinement.
+- Production build: not run successfully in the isolated environment because project dependencies are not installed (`vite: not found`). Run `npm ci` on the development machine, then `npm run build`.
+- Live Supabase wiring, RLS and production backend validation remain intentionally deferred to the final integration stage, as requested by the project owner.
+
+### Still requiring focused work
+- Course-specific career mapping should be academically and industry reviewed; pathway-level directions are a useful fallback, not a guarantee of job eligibility.
+- Course curriculum generation has structural coverage across all 368 courses, but the full teaching notes, worked examples, subject-specific assessment rubrics and practical resources still require content-quality review.
+- Browser end-to-end tests and accessibility/performance checks still need to be run in a configured environment.

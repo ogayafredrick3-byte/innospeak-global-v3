@@ -82,11 +82,21 @@ Payment creation now derives price and learner identity from the server-owned co
 
 The latest source-level checks recorded in the project include:
 
-- Seventeen Node tests pass, covering catalogue-to-LMS resolution, curriculum coverage, enrolment/progress RPC guards, safe lesson rendering and the non-destructive legacy reset migration.
+- Twenty-three Node tests pass, covering catalogue-to-LMS resolution, curriculum coverage, enrolment/progress RPC guards, safe lesson rendering, URL safety, tutor lesson publication validation, and the non-destructive legacy reset migration.
 - Project audit passes: 368 unique course codes, no missing relative imports, all 368 curriculum records present, six modules per course, 2,208 unique module-outcome sets, no old generic outcome templates, safe enrolment/progress migration checks, and assessment weights total 100.
-- A Babel syntax scan passed for 431 JS/JSX/TS source files.
+- The project source audit reports zero missing relative imports and zero duplicate catalogue course codes. A fresh production build remains unverified in this environment because dependency installation did not complete.
 - Public catalogue audits pass for all 12 Academy pathways, seven Labs tracks and 368 course entries.
 
 A production build, live Supabase migration, payment-provider round trip, RLS penetration test and browser-based end-to-end test suite have **not** been verified in this environment. Passing source audits are not proof of a live production deployment.
 
 See [`docs/MASTER_READINESS_AUDIT.md`](./docs/MASTER_READINESS_AUDIT.md) for findings and remaining work, [`docs/LMS_STABILITY_REVIEW.md`](./docs/LMS_STABILITY_REVIEW.md) for the implemented LMS hardening, [`docs/DEPLOYMENT_STABILITY_CHECKLIST.md`](./docs/DEPLOYMENT_STABILITY_CHECKLIST.md) for safe rollout steps, and [`docs/LMS_STABILITY_AND_RELEASE_STANDARD.md`](./docs/LMS_STABILITY_AND_RELEASE_STANDARD.md) for acceptance criteria.
+
+## Curriculum quality review
+
+Run `npm run audit:curriculum` to generate the curriculum quality summary and the per-course CSV review queue. The screening highlights content that needs human review; it does not claim independent academic validation.
+
+
+
+## Tutor lesson workflow
+
+Tutors author and upload their own lesson notes and resources in the LMS; this repository does not preload full teaching notes. The lesson editor supports drafts, content editing, practical activities, lesson resources, quizzes and assignments. Publishing now checks that a lesson has a title and at least one meaningful learning item, and rejects unsafe video/external URL schemes. Resource uploads are limited to 25 MB per file by the client data layer. Live upload, storage permissions, role access, and publication behavior must be verified after Supabase is wired in a staging environment.

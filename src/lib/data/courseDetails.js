@@ -53,6 +53,139 @@ const DEFAULT_CERT_ITEMS = [
   { icon: 'ShieldCheck', label: 'Verification status', description: 'Any external recognition or accreditation must be confirmed separately' },
 ];
 
+/*
+ * Pathway-level career directions are used only when a course does not have
+ * individually reviewed career entries. They describe possible applications
+ * of the skills, not promised jobs or professional eligibility. Course-specific
+ * career data takes precedence whenever it is available.
+ */
+const CAREER_DIRECTIONS_BY_PATHWAY = {
+  'english-communication': [
+    'Customer support and client communication',
+    'Administrative and communications support',
+    'English tutoring or language support, where appropriately qualified',
+    'Workplace communication and presentation roles',
+  ],
+  'world-languages': [
+    'Multilingual customer support',
+    'Language-services project assistance',
+    'Localization and content-review support',
+    'Language tutoring, where appropriately qualified',
+  ],
+  'international-qualifications': [
+    'Progression to further study or professional training',
+    'Academic administration and learner support',
+    'Examination preparation support, where qualified',
+    'Roles aligned with the specific qualification studied',
+  ],
+  'kenya-curriculum-tvet': [
+    'Teaching and learning support',
+    'Training administration and workshop support',
+    'Curriculum and instructional-material support',
+    'Technical training roles where required credentials are held',
+  ],
+  'digital-skills-productivity': [
+    'Digital administration and office support',
+    'Data entry and records coordination',
+    'Digital operations support',
+    'Productivity-tool support for teams and small businesses',
+  ],
+  'creative-design-media': [
+    'Graphic design and visual-content assistance',
+    'Social media and digital-content production',
+    'Multimedia production support',
+    'Creative project coordination',
+  ],
+  'business-entrepreneurship': [
+    'Small-business and enterprise development',
+    'Business operations and administration',
+    'Sales, marketing and customer relations',
+    'Project coordination, depending on experience',
+  ],
+  'freelancing-remote-work': [
+    'Independent freelance service delivery',
+    'Virtual assistance and remote administration',
+    'Remote customer support',
+    'Online tutoring or specialist services where qualified',
+  ],
+  'career-global': [
+    'Career development and job-search support',
+    'Recruitment and people-operations assistance',
+    'Project and programme support',
+    'Professional progression within the learner’s existing field',
+  ],
+  'education-teaching-training': [
+    'Teaching and learner-support roles',
+    'Training coordination and administration',
+    'Instructional content development',
+    'Trainer or educator roles where required qualifications are held',
+  ],
+  'health-hospitality-community': [
+    'Hospitality and service operations',
+    'Community-programme support',
+    'Customer care and service coordination',
+    'Administrative support in relevant service settings',
+  ],
+  'personal-life-skills': [
+    'Teamwork and workplace communication',
+    'Community and volunteer coordination',
+    'Personal effectiveness in existing roles',
+    'Peer-support activities where suitable and appropriately supervised',
+  ],
+  'software-engineering': [
+    'Junior software and web development',
+    'Quality assurance and software testing',
+    'Application support and maintenance',
+    'Entry-level development project work',
+  ],
+  'data-analytics': [
+    'Junior data and reporting analysis',
+    'Data quality and records support',
+    'Business intelligence support',
+    'Dashboard and operational reporting',
+  ],
+  'ai-intelligent-systems': [
+    'AI-enabled workflow and automation support',
+    'Data preparation and AI operations support',
+    'AI application prototyping',
+    'Responsible adoption of AI tools in a relevant field',
+  ],
+  'cloud-infrastructure': [
+    'Cloud and IT operations support',
+    'Junior systems administration',
+    'Infrastructure monitoring and service desk work',
+    'DevOps support, depending on practical experience',
+  ],
+  'cybersecurity': [
+    'IT support with a security focus',
+    'Security operations trainee pathways',
+    'Security awareness and compliance support',
+    'Entry-level risk and incident documentation support',
+  ],
+  'engineering-smart-systems': [
+    'Electronics and engineering technician pathways',
+    'Automation and control-system support',
+    'Technical project and workshop assistance',
+    'IoT and prototype development support',
+  ],
+  'creative-technology': [
+    'Interactive and multimedia content production',
+    'Digital experience and interface prototyping',
+    'Creative technology project support',
+    'Digital media production and testing',
+  ],
+};
+
+function getCareerDirections(base, detail) {
+  if (Array.isArray(detail?.careers) && detail.careers.length > 0) return detail.careers;
+  return CAREER_DIRECTIONS_BY_PATHWAY[base.pathwayId] || [
+    'Entry-level support roles related to the course subject',
+    'Further study or specialist training in the subject area',
+    'Project-based practice to build a portfolio of evidence',
+    'Applying the skills within the learner’s current workplace or business',
+  ];
+}
+
 /* ──────────────────────────────────────────────────────────────
    COURSE DETAILS
    ────────────────────────────────────────────────────────────── */
@@ -1768,7 +1901,7 @@ export function buildCourseData(code) {
     capstone: generated?.capstone || null,
     contentAuthorization: generated?.contentAuthorization || null,
     certificationItems: detail?.certification?.items || DEFAULT_CERT_ITEMS,
-    careers: detail?.careers || [],
+    careers: getCareerDirections(base, detail),
     relatedCourses: detail?.relatedCourses || [],
     faqs: detail?.faqs || SHARED_FAQS,
     reviews: detail?.reviews || [],

@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "audit:project": "node scripts/audit-project.mjs",
     "check": "npm test && npm run audit:project && npm run build",
-    "test": "node --test"
+    "test": "node --test",
+    "audit:curriculum": "node scripts/audit-curriculum-quality.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.110.6",

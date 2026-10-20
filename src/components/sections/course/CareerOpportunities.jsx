@@ -25,8 +25,8 @@ export default function CareerOpportunities({ course }) {
               title="Where This Can Take You"
               subtitle={
                 careers.length > 0
-                  ? 'Graduates of this course pursue careers in a range of fields:'
-                  : 'Career pathways for this course are being finalised.'
+                  ? 'These are possible ways to apply the skills. They are not job guarantees; eligibility depends on experience, employer requirements and any professional qualifications needed.'
+                  : 'Explore possible skill applications while you build experience and a portfolio.'
               }
             />
           </div>
@@ -40,11 +40,10 @@ export default function CareerOpportunities({ course }) {
                 <Briefcase size={24} strokeWidth={1.8} aria-hidden="true" />
               </div>
               <h3 className="mt-5 font-display text-lg font-bold text-navy-900 sm:text-xl">
-                Career pathways coming soon
+                Career directions
               </h3>
               <p className="mx-auto mt-3 max-w-md font-body text-sm leading-6 text-navy-500">
-                Career opportunities linked to this course will be published here
-                shortly.
+                Career outcomes depend on your experience, local requirements and any additional qualifications needed.
               </p>
             </motion.div>
           ) : (

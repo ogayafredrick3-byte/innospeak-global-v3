@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -22,6 +22,7 @@ import QuizEditor from '../../components/teach/QuizEditor.jsx';
 import AssignmentEditor from '../../components/teach/AssignmentEditor.jsx';
 import SafeLessonContent, { sanitizeLessonContent } from '../../components/learn/SafeLessonContent.jsx';
 import { getYouTubeEmbedUrl, safeHttpUrl } from '../../lib/security/urls.js';
+import { getLessonValidationError } from '../../lib/lms/lessonValidation.js';
 import CompassAssistButton from '../../components/teach/CompassAssistButton.jsx';
 import { resolveLmsCourse } from '../../lib/data/lmsCourse';
 
@@ -54,19 +55,23 @@ function getIcon(type) {
    ────────────────────────────────────────────────────────────── */
 
 function RichTextEditor({ value, onChange, placeholder }) {
-  const [active, setActive] = useState(false);
+  const editorRef = useRef(null);
+  const initializedRef = useRef(false);
+
+  useEffect(() => {
+    // Seed the editor once per mounted lesson. Avoid replacing innerHTML on
+    // every keystroke, which would move the caret and make editing frustrating.
+    if (editorRef.current && !initializedRef.current) {
+      editorRef.current.innerHTML = sanitizeLessonContent(value || '');
+      initializedRef.current = true;
+    }
+  }, [value]);
 
   function exec(command, val) {
+    if (!editorRef.current) return;
     document.execCommand(command, false, val || null);
-    onChange(ref.current.innerHTML);
+    onChange(editorRef.current.innerHTML);
   }
-
-  const ref = useCallback((node) => {
-    if (node && !active) {
-      node.innerHTML = sanitizeLessonContent(value || '');
-      setActive(true);
-    }
-  }, []);
 
   return (
     <div className="rounded-2xl border border-navy-100 overflow-hidden">
@@ -80,11 +85,11 @@ function RichTextEditor({ value, onChange, placeholder }) {
         <button type="button" onClick={() => exec('insertUnorderedList')} className="rounded-lg px-2 py-1 text-navy-700 hover:bg-navy-100" title="Bullet list"><ListChecks size={14} /></button>
         <button type="button" onClick={() => exec('insertOrderedList')} className="rounded-lg px-2 py-1 text-navy-700 hover:bg-navy-100" title="Numbered list">1.</button>
         <span className="mx-1 h-5 w-px bg-navy-100" />
-        <button type="button" onClick={() => { const url = prompt('Enter URL'); if (url) exec('createLink', url); }} className="rounded-lg px-2 py-1 text-navy-700 hover:bg-navy-100" title="Insert link"><LinkIcon size={14} /></button>
+        <button type="button" onClick={() => { const url = prompt('Enter an HTTPS or HTTP URL'); if (url) { const safeUrl = safeHttpUrl(url); if (safeUrl) exec('createLink', safeUrl); else window.alert('Enter a valid HTTP or HTTPS URL.'); } }} className="rounded-lg px-2 py-1 text-navy-700 hover:bg-navy-100" title="Insert link"><LinkIcon size={14} /></button>
         <button type="button" onClick={() => exec('removeFormat')} className="rounded-lg px-2 py-1 text-navy-700 hover:bg-navy-100" title="Clear formatting"><X size={14} /></button>
       </div>
       <div
-        ref={ref}
+        ref={editorRef}
         contentEditable
         suppressContentEditableWarning
         onInput={(e) => onChange(e.currentTarget.innerHTML)}
@@ -165,8 +170,21 @@ function ResourceForm({ onSave, onCancel, initial }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!form.title) return;
-    onSave(form);
+    if (!form.title.trim() || uploading) return;
+    if (isLinkType && !safeHttpUrl(form.external_url)) {
+      setUploadError('Enter a valid HTTP or HTTPS link.');
+      return;
+    }
+    if (isFileType && !form.file_url.trim()) {
+      setUploadError('Upload a file or enter its HTTP or HTTPS URL before saving this resource.');
+      return;
+    }
+    if (form.file_url && /^[a-z][a-z0-9+.-]*:/i.test(form.file_url) && !safeHttpUrl(form.file_url)) {
+      setUploadError('The file URL must use HTTP or HTTPS, or be a valid uploaded storage path.');
+      return;
+    }
+    setUploadError(null);
+    onSave({ ...form, title: form.title.trim(), external_url: form.external_url ? safeHttpUrl(form.external_url) : '' });
   }
 
   return (
@@ -372,7 +390,21 @@ export default function LessonContentBuilder() {
   }
 
   async function handleSave(publish = false) {
-    if (!form.title?.trim()) return;
+    const validationError = getLessonValidationError({
+      title: form.title,
+      videoUrl: form.video_url,
+      externalUrl: form.external_url,
+      content: form.content,
+      practicalActivity: form.practical_activity,
+      resourceCount: state.resources.length,
+      publish: publish || state.lesson?.status === 'published',
+    });
+    if (validationError) {
+      setSaveError(validationError);
+      return;
+    }
+    const safeVideoUrl = form.video_url ? safeHttpUrl(form.video_url) : null;
+    const safeExternalUrl = form.external_url ? safeHttpUrl(form.external_url) : null;
     setSaving(true);
     setSaveError(null);
     try {
@@ -381,12 +413,12 @@ export default function LessonContentBuilder() {
         title: form.title.trim(),
         description: form.description,
         content_type: form.content_type,
-        content: form.content,
-        video_url: form.video_url || null,
-        external_url: form.external_url || null,
+        content: sanitizeLessonContent(form.content || ''),
+        video_url: safeVideoUrl,
+        external_url: safeExternalUrl,
         practical_activity: form.practical_activity || null,
         learning_objectives: cleanObjectives,
-        status: publish ? 'published' : 'draft',
+        status: publish || state.lesson?.status === 'published' ? 'published' : 'draft',
       });
       setSaved(true);
       setTimeout(() => setSaved(false), 2500);
@@ -652,6 +684,7 @@ export default function LessonContentBuilder() {
             }
           >
             <RichTextEditor
+              key={lesson.id}
               value={form.content}
               onChange={(html) => update('content', html)}
               placeholder="Write your lesson content here, or click 'Draft with Compass' above…"
@@ -734,10 +767,10 @@ export default function LessonContentBuilder() {
           {/* Save Bar */}
           <div className="sticky bottom-4 z-10 flex items-center justify-end gap-3 rounded-2xl border border-navy-100 bg-white/90 p-4 shadow-premium backdrop-blur">
             <span className="font-body text-sm text-navy-400">
-              {isPublished ? 'This lesson is published' : 'Saved as draft'}
+              {isPublished ? 'Published · saved changes go live' : 'Saved as draft'}
             </span>
             <button type="button" onClick={() => handleSave(false)} disabled={saving} className="btn-outline inline-flex items-center gap-2 text-sm disabled:opacity-60">
-              <Save size={15} /> {saving ? 'Saving...' : 'Save as Draft'}
+              <Save size={15} /> {saving ? 'Saving...' : isPublished ? 'Save Changes' : 'Save as Draft'}
             </button>
             <button type="button" onClick={() => handleSave(true)} disabled={saving} className="btn-gold inline-flex items-center gap-2 text-sm disabled:opacity-60">
               <CheckCircle2 size={15} /> {saving ? 'Publishing...' : 'Publish Lesson'}
