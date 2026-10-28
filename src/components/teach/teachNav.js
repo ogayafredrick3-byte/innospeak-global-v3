@@ -7,7 +7,7 @@ export const teachNav = [
   { key: 'profile', label: 'My Profile', path: '/teach/profile', icon: User },
   { key: 'my-courses', label: 'My Courses', path: '/teach/courses', icon: BookOpen },
   { key: 'create-course', label: 'Create Course', path: '/teach/create-course', icon: PlusCircle },
-  { key: 'students', label: 'Students', path: '/teach/students', icon: Users },
+  { key: 'students', label: 'Enrollments', path: '/teach/students', icon: Users },
   { key: 'materials', label: 'Learning Materials', path: '/teach/materials', icon: FileText },
   { key: 'assignments', label: 'Assignments', path: '/teach/assignments', icon: ClipboardCheck },
   { key: 'assessments', label: 'Assessments', path: '/teach/assessments', icon: GraduationCap },
