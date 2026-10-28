@@ -86,6 +86,10 @@ export default function Register() {
       setError('Please enter your personal email address.');
       return;
     }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(personalEmail.trim())) {
+      setError('Please enter a valid email address.');
+      return;
+    }
 
     setSubmitting(true);
     try {
@@ -106,11 +110,14 @@ export default function Register() {
     } catch (err) {
       // eslint-disable-next-line no-console
       console.error('[Register] signup failed:', err);
-      setError(
-        err?.message?.toLowerCase().includes('already')
-          ? 'An account already exists with this email. Please log in instead.'
-          : 'We could not create your account right now. Please try again.'
-      );
+      const msg = (err?.message || '').toLowerCase();
+      if (msg.includes('already') || msg.includes('exists') || msg.includes('registered')) {
+        setError('An account already exists with this email. Please log in instead.');
+      } else if (msg.includes('rate limit') || msg.includes('too many') || msg.includes('429')) {
+        setError('Too many sign-up attempts. Please wait a moment and try again.');
+      } else {
+        setError('We could not create your account right now. Please try again.');
+      }
     } finally {
       setSubmitting(false);
     }

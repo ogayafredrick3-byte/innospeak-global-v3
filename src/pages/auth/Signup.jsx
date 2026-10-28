@@ -36,10 +36,22 @@ export default function Signup() {
   const [error, setError] = useState(null);
   const [needsVerification, setNeedsVerification] = useState(false);
 
+  function isValidEmail(value) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     setError(null);
 
+    if (!fullName.trim()) {
+      setError('Please enter your full name.');
+      return;
+    }
+    if (!isValidEmail(email)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
     if (password.length < 8) {
       setError('Password must be at least 8 characters.');
       return;
@@ -47,14 +59,21 @@ export default function Signup() {
 
     setIsSubmitting(true);
     try {
-      const data = await signUpWithEmail({ email, password, fullName });
+      const data = await signUpWithEmail({ email: email.trim(), password, fullName: fullName.trim() });
       if (data.session) {
         navigate('/portal', { replace: true });
       } else {
         setNeedsVerification(true);
       }
     } catch (err) {
-      setError(err.message || 'Could not create your account. Please try again.');
+      const msg = (err?.message || '').toLowerCase();
+      if (msg.includes('already') || msg.includes('registered') || msg.includes('exists')) {
+        setError('An account with this email already exists. Please log in instead.');
+      } else if (msg.includes('rate limit') || msg.includes('too many') || msg.includes('429')) {
+        setError('Too many sign-up attempts. Please wait a moment and try again.');
+      } else {
+        setError(err.message || 'Could not create your account. Please try again.');
+      }
     } finally {
       setIsSubmitting(false);
     }
