@@ -33,3 +33,13 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
+
+.env
+.env.*
+!.env.example
+!.env.*.example
+node_modules/
+dist/
+coverage/
+.vercel/
+.netlify/
