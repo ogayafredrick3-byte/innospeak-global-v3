@@ -21,13 +21,13 @@ const PILLARS = [
     icon: Users,
     title: 'Team-Based Builds',
     description:
-      'Work in cross-functional teams that mirror real engineering organisations — designers, developers, analysts and product thinkers.',
+      'Work in cross-functional teams with designers, developers, analysts and product thinkers, as you would in an engineering organisation.',
   },
   {
     icon: TrendingUp,
     title: 'Scalable Innovation',
     description:
-      'Build projects designed to scale — from local community solutions to globally deployable products and services.',
+      'Build projects that can scale from local community solutions to products and services used around the world.',
   },
 ];
 

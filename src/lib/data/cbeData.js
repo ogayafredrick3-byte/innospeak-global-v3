@@ -70,7 +70,7 @@ export const CBE_INFO = {
   shortDescription:
     'Full-grade enrollment aligned with KICD. One enrollment, all subjects, one certificate per grade.',
   description:
-    'InnoSpeak CBE Academy follows Kenya\'s Competency Based Curriculum (CBC) as designed by KICD. Learners enroll by grade — one payment covers every subject for that grade — and instructors load lessons directly into the LMS.',
+    'InnoSpeak CBE Academy follows Kenya\'s Competency Based Curriculum (CBC) as designed by KICD. Learners enroll by grade, with one payment covering every subject. Instructors load lessons directly into the LMS.',
 
   stats: {
     grades: 10,

@@ -1,3 +1,6 @@
+[functions.student-id-login]
+verify_jwt = false
+
 [functions.create-student]
 verify_jwt = true
 
@@ -8,7 +11,9 @@ verify_jwt = true
 verify_jwt = true
 
 [functions.mpesa-pay]
-verify_jwt = true
+# Safaricom callbacks have no Supabase JWT; the function validates user JWTs
+# for initiation and verifies successful callbacks with Daraja before enrollment.
+verify_jwt = false
 
 [functions.paypal-pay]
 verify_jwt = true

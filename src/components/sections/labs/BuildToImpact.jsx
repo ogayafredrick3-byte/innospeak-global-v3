@@ -16,7 +16,7 @@ export default function BuildToImpact() {
         <SectionHeading
           eyebrow="InnoSpeak Build-to-Impact"
           title="Make the Work Visible"
-          subtitle="A distinctive Lab experience should leave learners with evidence of what they built, how it was tested and what they learned—not only a course completion badge."
+          subtitle="A distinctive Lab experience should leave learners with evidence of what they built, how it was tested and what they learned. The experience should offer more than a course completion badge."
         />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {BUILD_STEPS.map(({ icon: Icon, title, detail }, index) => (

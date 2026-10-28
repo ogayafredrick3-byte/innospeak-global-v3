@@ -21,7 +21,7 @@ const SHARED_FAQS = [
   {
     question: 'Who can apply?',
     answer:
-      'Anyone aged 16 and above with an interest in the subject. Some courses require prior qualifications — check the Entry Requirements section for details.',
+      'Anyone aged 16 and above with an interest in the subject. Some courses require prior qualifications. Check the Entry Requirements section for details.',
   },
   {
     question: 'How do I study?',
@@ -304,7 +304,7 @@ export const COURSE_DETAILS = {
   IEL101: {
     overview: {
       description:
-        'IELTS Academic Preparation is a focused, results-driven course that equips you with the strategies, skills, and practice needed to achieve top IELTS Academic band scores. Covering all four modules — Listening, Reading, Writing, and Speaking — you will learn from certified instructors and take regular mock tests.',
+        'IELTS Academic Preparation is a focused course that builds the strategies and skills needed for the IELTS Academic test. Study Listening, Reading, Writing and Speaking with regular practice tests and instructor guidance.',
       targetAudience:
         'Students planning to study abroad, professionals seeking immigration or work visas, and anyone who needs an internationally recognised English language qualification.',
       objectives: [
@@ -354,7 +354,7 @@ export const COURSE_DETAILS = {
     faqs: SHARED_FAQS,
     reviews: [
       { name: 'Grace Wanjiku', country: 'Kenya', rating: 5, text: 'I achieved a band 7.5 thanks to this course. The mock tests and speaking practice were invaluable.' },
-      { name: 'Mohammed Yusuf', country: 'Somalia', rating: 5, text: 'The writing module was the best part — I finally understood how to structure Task 2 essays.' },
+      { name: 'Mohammed Yusuf', country: 'Somalia', rating: 5, text: 'The writing module was the best part. I finally understood how to structure Task 2 essays.' },
       { name: 'Sarah Kimani', country: 'Kenya', rating: 5, text: 'Professional instructors and authentic materials. I felt fully prepared on exam day.' },
     ],
   },
@@ -1443,7 +1443,7 @@ export const COURSE_DETAILS = {
   COD101: {
     overview: {
       description:
-        'Coding Fundamentals introduces you to the building blocks of programming and computational thinking. Through hands-on projects, you will learn core programming concepts that apply across all languages — from variables and loops to functions and data structures.',
+        'Coding Fundamentals introduces programming and computational thinking. Through hands-on projects, learn concepts that apply across languages, including variables, loops, functions and data structures.',
       targetAudience:
         'Beginners interested in technology and programming, students considering a career in tech, and professionals who want to understand coding fundamentals.',
       objectives: [

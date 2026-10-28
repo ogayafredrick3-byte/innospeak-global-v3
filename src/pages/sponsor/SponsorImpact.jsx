@@ -59,7 +59,7 @@ export default function SponsorImpact() {
         </h1>
         <p className="mt-2 max-w-2xl font-body text-sm text-navy-500">
           Verified progress updates written by our Foundation team. Learner identities
-          are always protected — you see initials only.
+          are protected, and only initials are shown.
         </p>
       </div>
 

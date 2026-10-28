@@ -14,7 +14,7 @@ const FAQS = [
   {
     question: 'Who can apply?',
     answer:
-      'Anyone aged 16 and above — students, professionals, graduates, job seekers and lifelong learners — is welcome to apply. Our programmes span beginner to advanced levels, so there is a starting point for everyone.',
+      'Anyone aged 16 and above is welcome to apply, including students, professionals, graduates, job seekers and lifelong learners. Our programmes span beginner to advanced levels, so there is a starting point for everyone.',
   },
   {
     question: 'Are classes online?',
@@ -29,7 +29,7 @@ const FAQS = [
   {
     question: 'How long are programmes?',
     answer:
-      'Programme durations vary — most run between 6 and 16 weeks, depending on the pathway and level. Each programme page lists its exact duration and study mode.',
+      'Programme durations vary. Most run between 6 and 16 weeks, depending on the pathway and level. Each programme page lists its exact duration and study mode.',
   },
   {
     question: 'What are the payment options?',

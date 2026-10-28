@@ -16,7 +16,7 @@ export default function Foundation() {
     <>
       <Seo
         title="InnoSpeak Global Foundation — Opening Doors to Learning, Skills & Opportunity"
-        description="The InnoSpeak Global Foundation removes barriers to education, technology, STEM and community opportunity — through scholarships, digital access, Girls in STEM and Community Impact Grants."
+        description="The InnoSpeak Global Foundation removes barriers to education, technology, STEM and community opportunity through scholarships, digital access, Girls in STEM and Community Impact Grants."
         path="/foundation"
       />
 

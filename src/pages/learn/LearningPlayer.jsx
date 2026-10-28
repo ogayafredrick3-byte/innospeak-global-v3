@@ -749,7 +749,7 @@ export default function LearningPlayer() {
                   <div className="flex-1">
                     <p className="font-display text-sm font-bold text-emerald-900">Course Completed!</p>
                     <p className="mt-1 font-body text-sm text-emerald-700">
-                      Congratulations — you have met all completion requirements for this course.
+                      Congratulations. You have met all completion requirements for this course.
                       {completionResult?.certificate_id
                         ? ' Your certificate has been issued and is available in your certificate library.'
                         : ''}

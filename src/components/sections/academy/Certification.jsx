@@ -15,7 +15,7 @@ const CERTIFICATES = [
     title: 'Digital Certificates',
     description:
       'Verified, shareable digital certificates that validate your achievements and skills.',
-    hint: 'Issued by the division you studied under — Academy, Labs or Foundation.',
+    hint: 'Issued by the division where you studied: Academy, Labs or Foundation.',
   },
   {
     icon: FileText,
@@ -29,7 +29,7 @@ const CERTIFICATES = [
     title: 'Career Portfolio',
     description:
       'A curated portfolio of projects and evidence that showcases your real-world capability.',
-    hint: 'Add to LinkedIn, CV or personal site — one click.',
+    hint: 'Add it to LinkedIn, your CV or personal site in one click.',
   },
 ];
 

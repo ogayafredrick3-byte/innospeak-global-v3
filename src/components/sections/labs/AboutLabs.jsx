@@ -20,7 +20,7 @@ export default function AboutLabs() {
             <SectionHeading
               eyebrow="More Than a Course"
               title="Where Skills Meet Real Problems"
-              subtitle="Labs isn't a second curriculum — it's what comes after the learning. Seven innovation pathways, one mission: build something real."
+              subtitle="Labs builds on what you learn. Choose from seven innovation pathways and work toward building something real."
             />
           </div>
 
@@ -46,8 +46,8 @@ export default function AboutLabs() {
               </h3>
 
               <p className="mt-3 flex-1 font-body text-sm leading-6 text-navy-600 sm:text-base sm:leading-7">
-                Structured programmes, modules and certification. You learn a skill —
-                communication, engineering, technology, business — from the ground up.
+                Structured programmes, modules and certification help you build skills
+                in communication, engineering, technology and business from the ground up.
               </p>
 
               <div className="mt-6 border-t border-navy-200/60 pt-5">

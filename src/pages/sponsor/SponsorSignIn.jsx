@@ -91,7 +91,7 @@ export default function SponsorSignIn() {
                   'Track every program you support',
                   'See total contributions and disbursements',
                   'Read anonymized learner progress reports',
-                  'No learner identities shared — privacy protected',
+                  'Learner identities are protected. Only initials are shared.',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <span className="mt-1.5 flex h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" />

@@ -56,7 +56,7 @@ Foundation staff manage all beneficiary selection and allocation. Progress updat
       'International partner advancing innovation, technical excellence and industry collaboration.',
     body: `The Innovation Centre of Excellence (ICE) is an international institution working on innovation and technical skills development.
 
-Through this partnership, InnoSpeak Global Foundation connects with global expertise in technical and vocational education — opening doors to joint programs and shared opportunities for learners.`,
+Through this partnership, InnoSpeak Global Foundation connects with global expertise in technical and vocational education. This creates opportunities for joint programmes and shared learning.`,
     author: { name: 'Innovation Centre of Excellence', role: 'Foundation Partner', avatar: 'ICE' },
     location: 'International',
     date: null,
@@ -75,12 +75,12 @@ Through this partnership, InnoSpeak Global Foundation connects with global exper
     body: `InnoSpeak Global Foundation supports learners across our Academy and Labs programs.
 
 Learners currently studying with us include:
-- **Sacdiyo Halima** — IGCSE, English and Swahili
-- **Sharif** (from Somalia) — English and Swahili
-- **Maria Mohamed** — English and Swahili
-- **Nura Abdulahi** — Adult Languages
-- **Mariam** — Adult Languages (continuing)
-- **Samira** — CBE Grade 7
+- **Sacdiyo Halima:** IGCSE, English and Swahili
+- **Sharif** (from Somalia): English and Swahili
+- **Maria Mohamed:** English and Swahili
+- **Nura Abdulahi:** Adult Languages
+- **Mariam:** Adult Languages (continuing)
+- **Samira:** CBE Grade 7
 
 Individual learner stories will be shared here as consent is given and progress is confirmed.`,
     author: { name: 'Foundation Team', role: 'Learner Community', avatar: 'FT' },
@@ -97,5 +97,5 @@ export const STORIES_INTRO = {
   eyebrow: 'Stories from the Field',
   title: 'Real Partners, Real Learners',
   subtitle:
-    'Verified updates from the Foundation community. New stories are added as programs progress — nothing is published without consent.',
+    'Verified updates from the Foundation community. New stories are added as programmes progress. Every story is shared with consent.',
 };

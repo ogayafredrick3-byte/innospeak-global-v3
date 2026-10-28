@@ -1,8 +1,14 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Compass } from 'lucide-react';
+import { ArrowRight, Compass, GraduationCap, Globe, Rocket } from 'lucide-react';
 import Button from '../ui/Button.jsx';
 import ClosingParticles from './ClosingParticles.jsx';
 import { CLOSING_CONTENT, CLOSING_BADGES } from './closingData.js';
+
+const BADGE_ICONS = {
+  graduation: GraduationCap,
+  globe: Globe,
+  rocket: Rocket,
+};
 
 /**
  * ClosingCTA — premium full-width closing section with navy-to-deep-blue
@@ -84,7 +90,9 @@ export default function ClosingCTA() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
-          {CLOSING_BADGES.map((badge, i) => (
+          {CLOSING_BADGES.map((badge, i) => {
+            const Icon = BADGE_ICONS[badge.icon] ?? Compass;
+            return (
             <motion.div
               key={badge.id}
               initial={{ opacity: 0, scale: 0.85 }}
@@ -94,12 +102,13 @@ export default function ClosingCTA() {
               whileHover={{ y: -4 }}
               className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 backdrop-blur-md transition-colors duration-300 hover:border-gold-400/40 hover:bg-gold-500/10"
             >
-              <span className="text-lg">{badge.emoji}</span>
+              <Icon size={18} className="text-gold-400" aria-hidden="true" />
               <span className="font-body text-sm font-semibold text-white sm:text-base">
                 {badge.label}
               </span>
             </motion.div>
-          ))}
+            );
+          })}
         </motion.div>
 
         {/* Buttons */}

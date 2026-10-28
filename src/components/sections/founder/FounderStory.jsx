@@ -49,7 +49,7 @@ export default function FounderStory() {
 
           <div>
             <motion.p variants={fadeUpItem} className="font-body text-base leading-8 text-navy-600 md:text-lg">
-              For Fred Omondi, innovation has never been about technology alone—it has always been
+              For Fred Omondi, innovation has never been about technology alone. It has always been
               about people. His journey is built on a simple yet powerful belief: that education,
               innovation, and purposeful leadership can transform individuals, strengthen communities,
               and shape a better future.
@@ -101,7 +101,7 @@ export default function FounderStory() {
 
             <motion.p variants={fadeUpItem} className="mt-6 font-body text-base leading-8 text-navy-600 md:text-lg">
               As Founder and Chief Executive Officer, Fred leads with a philosophy that education
-              should not merely prepare people for employment—it should prepare them to become
+              should not merely prepare people for employment. It should prepare them to become
               innovators, ethical leaders, entrepreneurs, and lifelong learners capable of solving
               society's greatest challenges.
             </motion.p>

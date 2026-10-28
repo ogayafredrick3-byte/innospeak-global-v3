@@ -22,7 +22,7 @@ export default function Register() {
   // step: 'number' | 'password' | 'verify-email'
   const [step, setStep] = useState('number');
   const [admissionNumber, setAdmissionNumber] = useState('');
-  const [verified, setVerified] = useState(null); // { name, email, institutional_email, already_registered }
+  const [verified, setVerified] = useState(null); // { name, institutional_email, already_registered }
   const [personalEmail, setPersonalEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -35,7 +35,8 @@ export default function Register() {
     setError('');
     setSubmitting(true);
     try {
-      const result = await verifyAdmissionNumber(admissionNumber);
+      const normalizedAdmissionNumber = admissionNumber.trim().toUpperCase();
+      const result = await verifyAdmissionNumber(normalizedAdmissionNumber);
       if (!result?.valid) {
         setError(
           result?.reason === 'empty'
@@ -50,8 +51,10 @@ export default function Register() {
         setSubmitting(false);
         return;
       }
+      setAdmissionNumber(normalizedAdmissionNumber);
       setVerified(result);
-      setPersonalEmail(result.email || '');
+      // Personal email is intentionally not returned by public admission verification.
+      setPersonalEmail('');
       setStep('password');
     } catch (err) {
       // eslint-disable-next-line no-console
@@ -285,7 +288,7 @@ export default function Register() {
                   </h1>
                   <p className="mt-2 font-body text-sm text-navy-500">
                     Set a password for your account. You&rsquo;ll use it together
-                    with your admission number — or your email — to log in.
+                    with your admission number or email to log in.
                   </p>
 
                   <div className="mt-6 rounded-xl border border-emerald-100 bg-emerald-50/60 px-4 py-3">
@@ -320,7 +323,7 @@ export default function Register() {
                         className={inputClass}
                       />
                       <p className="mt-1.5 font-body text-xs text-navy-400">
-                        Use the email you applied with, or any email you control.
+                        Enter the same email address you submitted with your application. This is checked before your account is linked.
                       </p>
                     </div>
 

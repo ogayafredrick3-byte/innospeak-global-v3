@@ -9,7 +9,7 @@ const STAGES = [
     institution: 'Kiambu Institute of Science and Technology (KIST)',
     credential: 'Diploma in Electrical and Electronics Engineering (Power Option)',
     description:
-      'Developed a passion for practical engineering, problem-solving, and designing solutions that address real-world challenges — alongside an entrepreneurial mindset for turning ideas into meaningful impact.',
+      'Developed a passion for practical engineering, problem-solving and designing solutions to real-world challenges. Also built an entrepreneurial mindset for turning ideas into meaningful impact.',
   },
   {
     icon: GraduationCap,

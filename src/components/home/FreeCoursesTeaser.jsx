@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Sparkles, BookOpen, Clock, Award } from 'lucide-react';
+import { ArrowRight, Sparkles, BookOpen, Clock, Award, MessageCircle, Laptop, Rocket, Globe, GraduationCap } from 'lucide-react';
 import { COURSES } from '../../lib/data/programmeData.js';
 import { getGrouping } from '../../lib/data/registry.js';
 
@@ -14,12 +14,12 @@ const MAX_SHOWN = 6;
 
 // Pathway → short icon key (see mapping below)
 const PATHWAY_ICON = {
-  'english-communication': '💬',
-  'digital-skills-productivity': '💻',
-  'career-global': '🚀',
-  'freelancing-remote-work': '🌐',
-  'education-teaching-training': '👨‍🏫',
-  'kenya-curriculum-tvet': '📘',
+  'english-communication': MessageCircle,
+  'digital-skills-productivity': Laptop,
+  'career-global': Rocket,
+  'freelancing-remote-work': Globe,
+  'education-teaching-training': GraduationCap,
+  'kenya-curriculum-tvet': BookOpen,
 };
 
 export default function FreeCoursesTeaser() {
@@ -52,7 +52,7 @@ export default function FreeCoursesTeaser() {
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl font-body text-sm leading-6 text-navy-100 sm:mt-5 sm:text-base sm:leading-7">
-            {totalFree} of our courses are free to complete — no payment required.
+            {totalFree} of our courses are free to complete, with no payment required.
             Build real skills, earn your InnoSpeak certificate, and upgrade to advanced
             programmes whenever you're ready.
           </p>
@@ -62,7 +62,7 @@ export default function FreeCoursesTeaser() {
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {freeCourses.map((course, i) => {
             const grouping = getGrouping(course.groupingCode);
-            const icon = PATHWAY_ICON[course.pathwayId] || '📚';
+            const Icon = PATHWAY_ICON[course.pathwayId] || BookOpen;
 
             return (
               <motion.article
@@ -75,8 +75,8 @@ export default function FreeCoursesTeaser() {
               >
                 {/* Top row: icon + FREE badge */}
                 <div className="flex items-start justify-between gap-3">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl">
-                    {icon}
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-gold-300">
+                    <Icon size={20} aria-hidden="true" />
                   </span>
                   <span className="rounded-full bg-emerald-500/15 px-2.5 py-1 font-body text-[10px] font-bold uppercase tracking-wide text-emerald-300 ring-1 ring-emerald-400/30">
                     Free

@@ -9,22 +9,22 @@ const FAQS = [
   {
     question: 'Do I need to be an Academy student to join Labs?',
     answer:
-      'No. Labs is open to anyone ready to build — Academy graduates, current students, and newcomers with the right foundational skills or a strong idea.',
+      'No. Labs is open to anyone ready to build, including Academy graduates, current students and newcomers with relevant foundational skills or a strong idea.',
   },
   {
     question: "What if I don't have a team or an idea yet?",
     answer:
-      "That's fine — join Innovation Projects or Tech Workshops and you'll be matched into a team or a sourced challenge. Startup Incubation is the track for people who already have an idea they want to build.",
+      "That's fine. Join Innovation Projects or Tech Workshops to be matched with a team or a sourced challenge. Startup Incubation is for people who already have an idea they want to build.",
   },
   {
     question: 'Is there a cost to join a Lab track?',
     answer:
-      'Track fees and intake timing vary — reach out through the Contact page and our team will walk you through current options.',
+      'Track fees and intake dates vary. Contact our team to discuss the current options.',
   },
   {
     question: 'Can organizations or communities submit a real challenge?',
     answer:
-      "Yes — that's how most Innovation Projects challenges are sourced. Use the Contact form and select 'Submit a Lab Challenge.'",
+      "Yes. Many Innovation Projects challenges come from organisations and communities. Use the Contact form and select 'Submit a Lab Challenge.'",
   },
   {
     question: 'How long does a typical Lab track run?',

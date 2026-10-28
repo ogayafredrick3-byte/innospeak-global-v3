@@ -16,7 +16,7 @@ export default function WaysToGive() {
         <SectionHeading
           eyebrow="Support Our Work"
           title="Support a Program"
-          subtitle="Your contribution goes to a Foundation program — not an individual. Our team allocates funds where the need is greatest and reports back on the impact."
+          subtitle="Your contribution supports a Foundation programme rather than an individual. Our team allocates funds where the need is greatest and reports on the impact."
           light
         />
 
@@ -58,7 +58,7 @@ export default function WaysToGive() {
         {/* Reassurance line */}
         <p className="mx-auto mt-10 max-w-2xl text-center font-body text-xs leading-6 text-white/60">
           Foundation staff manage all beneficiary selection and allocation. Supporters do not
-          have direct contact with learners — this protects privacy and dignity on both sides.
+          have direct contact with learners. This protects privacy and dignity on both sides.
         </p>
 
         {/* Sponsor sign-in link */}

@@ -28,7 +28,7 @@ export default function NewCourses() {
         <SectionHeading
           eyebrow="Fresh on the Platform"
           title="New to InnoSpeak"
-          subtitle="Recently added courses across every division — including AI, business, creative and education. Updated as the catalogue grows."
+          subtitle="Recently added courses across every division, including AI, business, creative and education. Updated as the catalogue grows."
         />
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">

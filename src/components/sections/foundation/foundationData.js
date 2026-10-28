@@ -231,7 +231,7 @@ export const SUPPORT_STEPS = [
     number: '05',
     title: 'Support',
     description:
-      'Approved support is allocated — tuition, materials, digital access or project funding.',
+      'Approved support is allocated to tuition, materials, digital access or project funding.',
   },
   {
     number: '06',

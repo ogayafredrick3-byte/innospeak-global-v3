@@ -58,6 +58,13 @@ test('payment Edge Functions do not trust browser-provided amount for checkout',
   assert.match(paypal, /Math\.abs\(capturedAmount - Number\(payment\.amount\)\)/);
 });
 
+test('M-PESA callbacks bypass gateway JWT but other edge functions keep it enabled', async () => {
+  const fs = await import('node:fs');
+  const config = fs.readFileSync(new URL('../supabase/config.toml', import.meta.url), 'utf8');
+  assert.match(config, /\[functions\.mpesa-pay\]\s+# Safaricom callbacks[\s\S]*?verify_jwt = false/);
+  assert.match(config, /\[functions\.paypal-pay\]\s*verify_jwt = true/);
+});
+
 
 test('learner progress RPC is guarded and the old definer RPC is revoked from browsers', async () => {
   const fs = await import('node:fs');

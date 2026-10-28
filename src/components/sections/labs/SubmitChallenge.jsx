@@ -63,8 +63,8 @@ export default function SubmitChallenge() {
             variants={fadeUpItem}
             className="mt-5 max-w-xl font-body text-sm leading-[1.7] text-navy-200 sm:mt-6 sm:text-base sm:leading-relaxed md:text-lg"
           >
-            Labs runs on real challenges from real organizations and communities — not invented
-            exercises. If you have a problem that could use a motivated team, mentor-guided
+            Labs works on real challenges submitted by organizations and communities. If you have
+            a problem that could use a motivated team, mentor-guided
             support and fresh thinking, we'd like to hear from you.
           </motion.p>
 

@@ -102,7 +102,7 @@ export default function LabTracks() {
           <SectionHeading
             eyebrow="Lab Tracks"
             title="Build Your Specialisation"
-            subtitle="Seven tracks. Each one a route from fundamentals to production-grade skills — software, data, AI, cloud, security, engineering and creative technology."
+            subtitle="Choose from seven tracks covering software, data, AI, cloud, security, engineering and creative technology, from fundamentals to production-ready skills."
           />
         </div>
 

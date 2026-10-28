@@ -92,7 +92,7 @@ export default function Tutor() {
               </h1>
               <p className="mt-3 max-w-xl font-body text-sm leading-relaxed text-navy-200 sm:text-base">
                 Your AI workspace for studying, building, writing, and career
-                development — grounded in your InnoSpeak courses, projects, and goals.
+                development, grounded in your InnoSpeak courses, projects and goals.
               </p>
             </div>
 

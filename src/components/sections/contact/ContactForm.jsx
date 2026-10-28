@@ -21,8 +21,8 @@ const SUBJECT_OPTIONS = [
 // ?interest= values → subject option + optional intro copy
 const INTEREST_MAP = {
   'foundation':                  { subject: 'Foundation Donation' },
-  'foundation-donate':           { subject: 'Foundation Donation', intro: "Tell us how you'd like to support — one-time, monthly, or unrestricted." },
-  'foundation-donate-individual':{ subject: 'Foundation Donation', intro: "Tell us how you'd like to support — one-time, monthly, or unrestricted." },
+  'foundation-donate':           { subject: 'Foundation Donation', intro: "Tell us how you'd like to support us, whether through a one-time, monthly, or unrestricted donation." },
+  'foundation-donate-individual':{ subject: 'Foundation Donation', intro: "Tell us how you'd like to support us, whether through a one-time, monthly, or unrestricted donation." },
   'foundation-donate-girls-in-tech': { subject: 'Foundation Donation', intro: "You are supporting the Girls in Tech Scholarship. Every $500 funds one full scholar." },
   'foundation-donate-community-digital': { subject: 'Foundation Donation', intro: "You are supporting the Community Digital Literacy fund." },
   'foundation-donate-children-education': { subject: 'Foundation Donation', intro: "You are supporting the Children Education Fund." },

@@ -67,7 +67,7 @@ export default function LearningModel() {
           <SectionHeading
             eyebrow="Learning Model"
             title="The InnoSpeak Learning Journey"
-            subtitle="A clear, guided path from your first choice to global opportunity — designed to keep you moving forward with confidence."
+            subtitle="A clear, guided path from your first choice to global opportunity, designed to keep you moving forward with confidence."
           />
         </div>
 

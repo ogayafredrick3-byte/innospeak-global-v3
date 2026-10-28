@@ -15,7 +15,7 @@ export const ANNOUNCEMENTS = [
     id: 'free-courses',
     icon: 'gift',
     pill: 'Free',
-    message: 'Start with 10 free courses — no payment required. Certificates issued on completion.',
+    message: 'Start with 10 free courses. No payment is required, and certificates are issued on completion.',
     cta: { label: 'Browse free', to: '/courses' },
   },
   {
@@ -29,7 +29,7 @@ export const ANNOUNCEMENTS = [
     id: 'certificates',
     icon: 'award',
     pill: 'Certified',
-    message: 'Every course issues a verifiable InnoSpeak certificate — shareable on LinkedIn and CV.',
+    message: 'Every course issues a verifiable InnoSpeak certificate that you can share on LinkedIn and include in your CV.',
     cta: { label: 'See how', to: '/verify-certificate' },
   },
 ];

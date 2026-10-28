@@ -583,7 +583,7 @@ export default function CourseCatalog() {
               Prefer a structured path?
             </h2>
             <p className="mx-auto mt-5 max-w-xl font-body text-sm leading-[1.7] text-navy-200 sm:text-base lg:text-lg">
-              Programs group related courses into clear learning routes — from
+              Programs group related courses into clear learning routes, from
               Academy pathways to Labs tracks.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">

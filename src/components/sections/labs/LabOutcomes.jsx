@@ -9,7 +9,7 @@ const OUTCOMES = [
     icon: Cpu,
     title: 'A Working Prototype',
     description:
-      'Something you actually built — code, hardware, or a functioning product, not just a plan.',
+      'A working result, such as code, hardware or a functioning product, rather than just a plan.',
   },
   {
     icon: Presentation,
@@ -57,7 +57,7 @@ export default function LabOutcomes() {
           <SectionHeading
             eyebrow="What You Walk Away With"
             title="Proof, Not Just a Certificate"
-            subtitle="Every track ends with something real in hand — not a completion badge."
+            subtitle="Every track ends with practical work you can show, not just a completion badge."
           />
         </div>
 

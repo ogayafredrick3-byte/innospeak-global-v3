@@ -141,7 +141,7 @@ export const EXPANSION_ACADEMY_COURSES = [
     division: 'academy', grouping: 'pathway', groupingCode: 'ACP-PLS',
     category: 'Personal Development & Life Skills', pillar: 'academy',
     shortDescription: 'Take your public speaking from competent to compelling with advanced techniques.',
-    fullDescription: 'Advanced Public Speaking covers storytelling structure, audience psychology, stagecraft, handling hostile questions, keynote delivery and speaking on camera — for experienced speakers who want to lead rooms.',
+    fullDescription: 'Advanced Public Speaking covers storytelling structure, audience psychology, stagecraft, handling challenging questions, keynote delivery and speaking on camera. It is designed for experienced speakers who want to lead rooms.',
     duration: '5 Weeks', studyMode: 'Hybrid', level: 'Advanced', language: 'English',
     feesUSD: 12, fees: 'KES 1,560', isFree: false,
     certification: 'InnoSpeak Advanced Public Speaking Certificate',

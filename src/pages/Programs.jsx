@@ -246,7 +246,7 @@ export default function Programs() {
     <>
       <Seo
         title="Programs — Learn. Build. Innovate."
-        description="Explore the 19 programs within the InnoSpeak Global ecosystem — 12 Academy pathways and 7 Labs tracks."
+        description="Explore 19 programs across the InnoSpeak Global ecosystem, including 12 Academy pathways and 7 Labs tracks."
         path="/programs"
       />
 
@@ -307,8 +307,8 @@ export default function Programs() {
             </h1>
 
             <p className="mx-auto mt-6 max-w-2xl font-body text-base leading-[1.7] text-navy-200 sm:text-lg">
-              Explore every path within the InnoSpeak Global ecosystem — structured
-              learning, practical innovation, and educational support.
+              Explore every path within the InnoSpeak Global ecosystem, from structured
+              learning and practical innovation to educational support.
             </p>
 
             {/* Quick stats */}
@@ -334,7 +334,7 @@ export default function Programs() {
             <SectionHeading
               eyebrow="One Ecosystem. Three Divisions."
               title="Choose Your Path Within InnoSpeak Global"
-              subtitle="Academy is the learning engine. Labs is the building engine. Foundation is the impact engine — one account, one ecosystem."
+              subtitle="Academy focuses on learning, Labs on building, and Foundation on community impact. All are part of one ecosystem."
             />
           </div>
 

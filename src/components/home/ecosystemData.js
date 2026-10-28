@@ -67,4 +67,4 @@ export const ECOSYSTEM_CARDS = [
 ];
 
 export const ECOSYSTEM_STATEMENT =
-  'Four connected engines. One mission — turn learning into capability, opportunity and measurable community impact.';
+  'Four connected engines work toward one mission: turning learning into capability, opportunity and measurable community impact.';

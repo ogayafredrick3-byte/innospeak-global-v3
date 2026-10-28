@@ -1,6 +1,6 @@
 /**
  * admissions — client-side helpers for the admission-number flow.
- * Works alongside the SQL functions in migration 004.
+ * Works alongside the course/year admissions workflow migration.
  */
 
 import { supabase } from './client';
@@ -32,12 +32,13 @@ export async function approveApplicationWithAdmission(applicationId) {
 
 export async function verifyAdmissionNumber(admissionNumber) {
   const c = assertConfigured();
+  const normalized = String(admissionNumber || '').trim().toUpperCase();
   const { data, error } = await c.rpc('verify_admission_number', {
-    p_admission_number: admissionNumber,
+    p_admission_number: normalized,
   });
   if (error) throw error;
   return data;
-  // → { valid, already_registered, name, email, institutional_email, status }
+  // → { valid, already_registered, name, institutional_email, status }; never returns personal email.
 }
 
 /* ──────────────────────────────────────────────────────────────

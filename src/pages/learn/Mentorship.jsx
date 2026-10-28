@@ -177,7 +177,7 @@ export default function Mentorship() {
             <div className="lg:sticky lg:top-24 lg:self-start">
               <SectionCard
                 title="Request a mentor"
-                description="Be specific about what you want help with — it helps us match you faster."
+                description="Be specific about what you want help with to help us find a suitable mentor."
               >
                 <form onSubmit={submit} className="space-y-4">
                   <TextField
@@ -204,7 +204,7 @@ export default function Mentorship() {
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
                       rows={4}
-                      placeholder="Add context for the mentor — your background, what you've tried, what you're stuck on."
+                      placeholder="Add context for the mentor, such as your background, what you've tried and where you're stuck."
                       className="mt-2 w-full rounded-2xl border border-navy-100 bg-white px-4 py-3 font-body text-sm text-navy-900 shadow-sm outline-none transition placeholder:text-navy-300 focus:border-gold-500 focus:ring-4 focus:ring-gold-500/15"
                     />
                   </div>

@@ -22,7 +22,7 @@ export default function LearningJourney() {
         <SectionHeading
           eyebrow="Your Learning Journey"
           title="From Discovery to Leadership"
-          subtitle="Six clear stages that take you from exploring our programmes to leading with confidence — one step at a time."
+          subtitle="Six clear stages take you from exploring our programmes to leading with confidence, one step at a time."
         />
 
         {/* ═══ Desktop: horizontal 6-step row with arrows ═══ */}

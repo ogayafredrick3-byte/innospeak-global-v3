@@ -119,7 +119,7 @@ CREATE POLICY inno_submission_file_insert ON storage.objects
       FROM public.assignments AS assignment
       LEFT JOIN public.modules AS module ON module.id = assignment.module_id
       JOIN public.lms_enrollments AS enrollment
-        ON enrollment.course_id = COALESCE(assignment.course_id, module.course_id)
+        ON enrollment.course_id = course_id_for_module(assignment.module_id)
        AND enrollment.student_id = auth.uid()
        AND enrollment.status IN ('active', 'completed')
       WHERE assignment.id::text = split_part(name, '/', 2)
@@ -131,16 +131,25 @@ CREATE POLICY inno_submission_file_select ON storage.objects
   USING (
     bucket_id = 'assignment-submissions'
     AND (
-      split_part(name, '/', 1) = auth.uid()::text
+      (
+        split_part(name, '/', 1) = auth.uid()::text
+        AND EXISTS (
+          SELECT 1
+          FROM public.assignments AS assignment
+          JOIN public.lms_enrollments AS enrollment
+            ON enrollment.course_id = course_id_for_module(assignment.module_id)
+           AND enrollment.student_id = auth.uid()
+           AND enrollment.status IN ('active', 'completed')
+          WHERE assignment.id::text = split_part(name, '/', 2)
+        )
+      )
       OR is_lms_admin()
       OR EXISTS (
         SELECT 1
         FROM public.assignments AS assignment
-        LEFT JOIN public.modules AS module ON module.id = assignment.module_id
         WHERE assignment.id::text = split_part(name, '/', 2)
-          AND is_course_instructor(COALESCE(assignment.course_id, module.course_id))
+          AND is_course_instructor(course_id_for_module(assignment.module_id))
       )
     )
   );
-
 COMMIT;

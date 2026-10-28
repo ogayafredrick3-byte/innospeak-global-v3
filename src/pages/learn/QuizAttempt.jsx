@@ -94,7 +94,7 @@ export default function QuizAttempt() {
           <div className="mt-4 rounded-xl bg-emerald-50 px-4 py-3">
             <p className="font-body text-sm font-semibold text-emerald-800">
               <CheckCircle2 size={15} className="mr-1 inline" />
-              Submitted — score {result.score} / {result.max_score} ({result.percent}%)
+              Submitted. Score: {result.score} / {result.max_score} ({result.percent}%)
             </p>
           </div>
         )}
@@ -102,7 +102,7 @@ export default function QuizAttempt() {
         {!activeAttempt && !result && bestAttempt && (
           <div className="mt-4 rounded-xl bg-navy-50 px-4 py-3">
             <p className="font-body text-sm text-navy-800">
-              Last attempt: {bestAttempt.score} / {bestAttempt.max_score} — {bestAttempt.passed ? 'Passed' : 'Not passed'}
+              Last attempt: {bestAttempt.score} / {bestAttempt.max_score}. {bestAttempt.passed ? 'Passed' : 'Not passed'}
             </p>
           </div>
         )}

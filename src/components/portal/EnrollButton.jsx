@@ -144,7 +144,7 @@ export default function EnrollButton({ course }) {
   if (paymentConfirmed && !enrollment) {
     return (
       <div className="mx-auto flex max-w-2xl flex-col gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-6 sm:p-7" role="status">
-        <p className="font-body text-sm font-bold text-amber-950">Payment confirmed — checking course access</p>
+        <p className="font-body text-sm font-bold text-amber-950">Payment confirmed. Checking course access.</p>
         <p className="font-body text-sm leading-6 text-amber-900">Your payment record is confirmed, but this page has not yet verified an active enrolment. Open My Learning to refresh your course list or contact support if the course is still missing.</p>
         <div className="flex flex-wrap gap-3">
           <Link to="/learn" className="inline-flex items-center gap-2 font-body text-sm font-bold text-amber-950 underline underline-offset-4">Open My Learning <ArrowRight size={14} /></Link>
@@ -198,8 +198,8 @@ export default function EnrollButton({ course }) {
 
   /* ── Ready to enroll ── */
   const enrollLabel = isPaid
-    ? `Enroll Now — ${course.fees}`
-    : 'Enroll Now — Free';
+    ? `Enroll Now: ${course.fees}`
+    : 'Enroll Now: Free';
 
   return (
     <div className="mx-auto flex max-w-2xl flex-col items-center gap-4">

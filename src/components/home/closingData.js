@@ -1,7 +1,7 @@
 export const CLOSING_BADGES = [
-  { id: 'world-class', emoji: '🎓', label: 'World-Class Learning' },
-  { id: 'global-opp', emoji: '🌍', label: 'Global Opportunities' },
-  { id: 'future-ready', emoji: '🚀', label: 'Future-Ready Skills' },
+  { id: 'world-class', icon: 'graduation', label: 'World-Class Learning' },
+  { id: 'global-opp', icon: 'globe', label: 'Global Opportunities' },
+  { id: 'future-ready', icon: 'rocket', label: 'Future-Ready Skills' },
 ];
 
 export const CLOSING_CONTENT = {

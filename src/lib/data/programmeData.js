@@ -534,7 +534,7 @@ const _BASE_COURSES = [
     code: "IEL101", name: "IELTS Academic Preparation", academy: ACADEMY,
     pathwayId: "international-qualifications", category: "International Qualifications", pillar: "academy",
     shortDescription: "Achieve your target IELTS Academic band score with focused preparation.",
-    fullDescription: "IELTS Academic Preparation is a focused, results-driven course that equips you with the strategies, skills, and practice needed to achieve top IELTS Academic band scores. Covering all four modules — Listening, Reading, Writing, and Speaking — you will learn from certified instructors and take regular mock tests.",
+    fullDescription: "IELTS Academic Preparation builds the strategies and skills needed for the IELTS Academic test. Study Listening, Reading, Writing and Speaking with regular practice tests and instructor guidance.",
     duration: "8 Weeks", studyMode: "Online", level: "Intermediate", language: "English",
     fees: "KES 18,000", certification: "IELTS Readiness Certificate",
     entryRequirements: [
@@ -2336,7 +2336,7 @@ const _BASE_COURSES = [
     code: "EMP101", name: "Employability Skills", academy: ACADEMY,
     pathwayId: "career", category: "Career Development", pillar: "academy",
     shortDescription: "Build the core soft skills employers look for across every industry.",
-    fullDescription: "Employability Skills develops communication, teamwork, problem-solving, time management and adaptability — the core soft skills that employers consistently rank as essential across every industry.",
+    fullDescription: "Employability Skills develops communication, teamwork, problem-solving, time management and adaptability. These skills are valued by employers across industries.",
     duration: "6 Weeks", studyMode: "Hybrid", level: "Beginner", language: "English",
     fees: "KES 10,000", certification: "Employability Skills Certificate",
     entryRequirements: [

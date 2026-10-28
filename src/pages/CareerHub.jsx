@@ -49,7 +49,7 @@ const JOURNEY_STEPS = [
 ];
 
 const DEVELOPMENT_AREAS = [
-  { icon: TrendingUp, title: 'Career Development',          description: 'Structured guidance to help you identify, pursue and achieve your professional goals — from first role to leadership.', href: '/learn/goals' },
+  { icon: TrendingUp, title: 'Career Development',          description: 'Structured guidance to help you identify, pursue and achieve your professional goals, from your first role to leadership.', href: '/learn/goals' },
   { icon: BookOpen,   title: 'Skills & Professional Growth', description: 'Build the technical, communication and leadership skills that employers and clients actually value.', href: '/courses' },
   { icon: Rocket,     title: 'Projects & Experience',       description: 'Labs projects, portfolio builds and practical challenges that turn learning into demonstrable evidence.', href: '/learn/projects' },
   { icon: Award,      title: 'Credentials & Achievements',  description: 'Earn recognised credentials that validate your skills and signal your readiness to employers and partners.', href: '/learn/certificates' },
@@ -281,7 +281,7 @@ export default function CareerHub() {
     <>
       <Seo
         title="Career Hub — Turn Learning Into Opportunity"
-        description="Career development, practical experience, credentials and real-world connections — everything you need to move from learning to earning."
+        description="Career development, practical experience, credentials and real-world connections. Everything you need to move from learning to earning."
         path="/career-hub"
       />
 
@@ -329,7 +329,7 @@ export default function CareerHub() {
 
             <p className="mx-auto mt-6 max-w-2xl font-body text-base leading-[1.7] text-navy-200 sm:text-lg">
               Career development, practical experience, credentials and real-world
-              connections — everything you need to move from learning to earning.
+              connections. Everything you need to move from learning to earning.
             </p>
 
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
@@ -364,7 +364,7 @@ export default function CareerHub() {
           <SectionHeading
             eyebrow="The Journey"
             title="Your Journey From Learning to Opportunity"
-            subtitle="Six connected stages — from the first course you take to the career progress you make."
+            subtitle="Six connected stages take you from your first course to your next career step."
           />
 
           <motion.ol
@@ -406,7 +406,7 @@ export default function CareerHub() {
           <SectionHeading
             eyebrow="Build Your Career"
             title="Four areas of focused growth"
-            subtitle="Everything you need to move from learning to earning — structured guidance, practical skills, real projects and recognised credentials."
+            subtitle="Move from learning to earning with structured guidance, practical skills, real projects and recognised credentials."
           />
 
           <motion.div

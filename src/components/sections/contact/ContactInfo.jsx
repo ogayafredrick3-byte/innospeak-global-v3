@@ -117,7 +117,7 @@ export default function ContactInfo() {
               Monday – Sunday · Available all day
             </p>
             <p className="mt-0.5 font-body text-xs text-navy-500">
-              Reach out any time — we reply within 24 hours
+              Reach out any time. We reply within 24 hours.
             </p>
           </div>
         </div>

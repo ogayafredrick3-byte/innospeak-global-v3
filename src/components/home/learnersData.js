@@ -11,7 +11,7 @@ export const LEARNERS = [
     country: 'Kenya',
     programs: ['IGCSE', 'English', 'Swahili'],
     story:
-      'Preparing for IGCSE while building fluency in English and Swahili — a full international qualifications journey.',
+      'Preparing for IGCSE while building fluency in English and Swahili as part of an international qualifications journey.',
     accent: 'gold',
   },
   {
@@ -20,7 +20,7 @@ export const LEARNERS = [
     country: 'Somalia',
     programs: ['English', 'Swahili'],
     story:
-      'Joined InnoSpeak from Somalia to master two regional languages — now communicating confidently across East Africa.',
+      'Joined InnoSpeak from Somalia to master two regional languages and now communicates confidently across East Africa.',
     accent: 'navy',
   },
   {
@@ -38,7 +38,7 @@ export const LEARNERS = [
     country: 'Kenya',
     programs: ['Adult Languages'],
     story:
-      'Returned to language learning as an adult — proving it is never too late to build a new skill.',
+      'Returned to language learning as an adult and showed that it is never too late to build a new skill.',
     accent: 'gold',
   },
   {
@@ -47,7 +47,7 @@ export const LEARNERS = [
     country: 'Kenya',
     programs: ['Adult Languages'],
     story:
-      'Still learning, still growing — currently advancing through the Adult Languages programme.',
+      'Still learning and growing through the Adult Languages programme.',
     accent: 'navy',
   },
   {
@@ -56,7 +56,7 @@ export const LEARNERS = [
     country: 'Kenya',
     programs: ['CBE Grade 7'],
     story:
-      'Began with InnoSpeak in Grade 7 of the CBE Academy — now progressing steadily through the Junior Secondary pathway.',
+      'Began with InnoSpeak in Grade 7 of the CBE Academy and is progressing through the Junior Secondary pathway.',
     accent: 'emerald',
   },
 ];
@@ -65,7 +65,7 @@ export const LEARNERS_INTRO = {
   eyebrow: 'Real Learners, Real Progress',
   title: 'Meet the InnoSpeak Community',
   subtitle:
-    'Learners from Kenya, Somalia and beyond — building languages, qualifications and confidence through InnoSpeak Global programmes.',
+    'Learners from Kenya, Somalia and beyond are building language skills, qualifications and confidence through InnoSpeak Global programmes.',
 };
 
 // Featured quote shown in the review submission panel

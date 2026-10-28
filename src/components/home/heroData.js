@@ -6,7 +6,7 @@ export const HERO_HEADLINE = [
 ];
 
 export const HERO_DESCRIPTION =
-  'InnoSpeak Global is a connected ecosystem of structured learning, practical innovation, and educational support — Academy, Labs, and Foundation working together so you do more than finish a course.';
+  'InnoSpeak Global brings together structured learning, practical innovation and educational support through Academy, Labs and Foundation. Together, they help you do more than finish a course.';
 
 export const HERO_STATS = [
   { value: 350, suffix: '+', label: 'Courses in catalogue' },

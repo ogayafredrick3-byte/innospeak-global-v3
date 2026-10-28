@@ -104,4 +104,5 @@ BEGIN
 END;
 $$;
 
-GRANT EXECUTE ON FUNCTION confirm_payment_and_enroll TO authenticated;
+REVOKE ALL ON FUNCTION confirm_payment_and_enroll(uuid, text, uuid, text) FROM PUBLIC, anon, authenticated;
+GRANT EXECUTE ON FUNCTION confirm_payment_and_enroll(uuid, text, uuid, text) TO service_role;

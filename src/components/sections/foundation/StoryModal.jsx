@@ -184,7 +184,7 @@ export default function StoryModal({ story, onClose }) {
                   Want to write the next story?
                 </p>
                 <p className="mt-1 font-body text-sm text-navy-600">
-                  Fund a scholarship or sponsor an initiative — your contribution shows up here.
+                  Fund a scholarship or sponsor an initiative. Your contribution will be shown here.
                 </p>
                 <div className="mt-4 flex flex-col gap-2 sm:flex-row">
                   <a

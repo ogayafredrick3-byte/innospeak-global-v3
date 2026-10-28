@@ -51,7 +51,7 @@ export const MVV_VALUES = [
   {
     id: 'collaboration',
     name: 'Collaboration',
-    description: 'We believe in the power of partnership — working together with learners, educators and organisations to achieve shared goals.',
+    description: 'We believe in the power of partnership. Together with learners, educators and organisations, we can achieve shared goals.',
     icon: 'handshake',
   },
   {

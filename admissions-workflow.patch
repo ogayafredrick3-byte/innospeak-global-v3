@@ -1,0 +1,43 @@
+--- a/src/pages/Register.jsx
++++ b/src/pages/Register.jsx
+@@ -22,7 +22,7 @@
+   // step: 'number' | 'password' | 'verify-email'
+   const [step, setStep] = useState('number');
+   const [admissionNumber, setAdmissionNumber] = useState('');
+-  const [verified, setVerified] = useState(null); // { name, email, institutional_email, already_registered }
++  const [verified, setVerified] = useState(null); // { name, institutional_email, already_registered }
+   const [personalEmail, setPersonalEmail] = useState('');
+   const [password, setPassword] = useState('');
+   const [confirmPassword, setConfirmPassword] = useState('');
+@@ -51,7 +51,8 @@
+         return;
+       }
+       setVerified(result);
+-      setPersonalEmail(result.email || '');
++      // Personal email is deliberately not returned by public admission verification.
++      setPersonalEmail('');
+       setStep('password');
+     } catch (err) {
+       // eslint-disable-next-line no-console
+--- a/src/pages/admin/Applications.jsx
++++ b/src/pages/admin/Applications.jsx
+@@ -9,7 +9,7 @@
+ import { listApplications, updateApplicationStatus } from '../../lib/supabase/admin';
+ import { approveApplicationWithAdmission } from '../../lib/supabase/admissions';
+ 
+-const STATUS_OPTIONS = ['submitted', 'under_review', 'additional_info_required', 'accepted', 'rejected', 'enrolled'];
++const STATUS_OPTIONS = ['submitted', 'under_review', 'additional_info_required', 'approved', 'rejected', 'enrolled'];
+ 
+ function ApproveAction({ row, onApprove, busy }) {
+   const [copied, setCopied] = useState(false);
+--- a/supabase/migrations/20261026120000_admissions_workflow.sql
++++ b/supabase/migrations/20261026120000_admissions_workflow.sql
+@@ -232,7 +232,7 @@
+   WHERE upper(coalesce(a.admission_number, a.student_number, '')) = upper(btrim(coalesce(p_admission_number, '')))
+   LIMIT 1;
+ 
+-  IF NOT FOUND OR v_app.status <> 'approved' THEN
++  IF NOT FOUND OR v_app.status IS DISTINCT FROM 'approved' THEN
+     RETURN jsonb_build_object('valid', false, 'already_registered', false);
+   END IF;
+   RETURN jsonb_build_object(

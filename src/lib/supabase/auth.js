@@ -29,28 +29,38 @@ export async function signInWithEmail({ email, password }) {
 }
 
 /**
- * getEmailForStudentNumber — resolves a student ID (issued by the
- * institution at admission) to its account email via a SECURITY DEFINER
- * database function, so the login form never needs direct read access
- * to the `profiles` table before the student is authenticated.
- */
-export async function getEmailForStudentNumber(studentNumber) {
-  assertConfigured();
-  const { data, error } = await supabase.rpc('get_login_email', { p_student_number: studentNumber });
-  if (error) throw error;
-  if (!data) throw new Error('No account was found for that Student ID.');
-  return data;
-}
-
-/**
- * signInWithIdentifier — accepts either an email address or a student ID
- * in the same field. Institution-issued credentials are a Student ID +
- * password, while self-registered accounts use their email + password.
+ * Supports email or institutional student ID login.
+ * Student-ID resolution happens server-side.
  */
 export async function signInWithIdentifier({ identifier, password }) {
+  assertConfigured();
+
   const trimmed = (identifier || '').trim();
-  const email = trimmed.includes('@') ? trimmed : await getEmailForStudentNumber(trimmed);
-  return signInWithEmail({ email, password });
+  if (!trimmed || !password) {
+    throw new Error('Enter your login ID and password.');
+  }
+
+  if (trimmed.includes('@')) {
+    return signInWithEmail({ email: trimmed, password });
+  }
+
+  const { data, error } = await supabase.functions.invoke('student-id-login', {
+    body: { studentNumber: trimmed, password },
+  });
+
+  if (error) throw error;
+  if (!data?.access_token || !data?.refresh_token) {
+    throw new Error(data?.error || 'Unable to sign in. Please try again.');
+  }
+
+  const { data: sessionData, error: sessionError } =
+    await supabase.auth.setSession({
+      access_token: data.access_token,
+      refresh_token: data.refresh_token,
+    });
+
+  if (sessionError) throw sessionError;
+  return sessionData;
 }
 
 export async function signOutUser() {

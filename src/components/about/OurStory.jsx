@@ -21,7 +21,7 @@ export default function OurStory() {
         <SectionHeading
           eyebrow="Our Story"
           title="The Journey of InnoSpeak Global"
-          subtitle="From a bold vision to a growing global ecosystem — discover how InnoSpeak Global came to life and where we are headed next."
+          subtitle="From a bold vision to a growing global ecosystem. Discover how InnoSpeak Global began and where we are headed next."
         />
 
         <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:gap-12">
@@ -84,7 +84,7 @@ export default function OurStory() {
             </div>
 
             <p className="relative mt-6 border-t border-white/10 pt-6 font-body text-sm italic leading-relaxed text-navy-200">
-              We bridge the gap between education and real-world opportunities — preparing learners for academic excellence, employment, entrepreneurship and global leadership.
+              We bridge the gap between education and real-world opportunities. We prepare learners for academic excellence, employment, entrepreneurship and global leadership.
             </p>
           </motion.div>
         </div>

@@ -124,8 +124,8 @@ export default function FoundationEvents() {
               Upcoming Events & Opportunities
             </h1>
             <p className="mt-5 max-w-2xl font-body text-base leading-[1.7] text-emerald-50/90 sm:text-lg">
-              Foundation events, information sessions, STEM workshops and application deadlines —
-              open to learners, communities and partners.
+              Foundation events, information sessions, STEM workshops and application deadlines
+              are open to learners, communities and partners.
             </p>
           </motion.div>
         </div>

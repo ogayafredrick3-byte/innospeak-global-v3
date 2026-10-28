@@ -185,7 +185,7 @@ export default function StorySubmissionForm({ open, onClose, onSubmit }) {
                 Add to the Foundation Community
               </h2>
               <p className="mt-2 max-w-2xl font-body text-sm leading-6 text-navy-600">
-                Sponsors, learners, volunteers and community partners — tell your part of the story.
+                Sponsors, learners, volunteers and community partners can all share their stories.
                 Submissions are reviewed before they appear publicly.
               </p>
             </div>
@@ -197,7 +197,7 @@ export default function StorySubmissionForm({ open, onClose, onSubmit }) {
                   <Check size={32} className="text-emerald-600" strokeWidth={3} />
                 </div>
                 <h3 className="mt-6 font-display text-2xl font-bold text-navy-900">
-                  Story received — thank you.
+                  Story received. Thank you.
                 </h3>
                 <p className="mt-3 max-w-md font-body text-sm leading-6 text-navy-600">
                   Our team will review your submission. If approved, it will appear on the
@@ -338,7 +338,7 @@ export default function StorySubmissionForm({ open, onClose, onSubmit }) {
                       />
                     </div>
                     <p className="mt-1.5 font-body text-xs text-navy-400">
-                      Not shown publicly — we use it to contact you about the review.
+                      Not shown publicly. We use it to contact you about the review.
                     </p>
                   </div>
                   <div>

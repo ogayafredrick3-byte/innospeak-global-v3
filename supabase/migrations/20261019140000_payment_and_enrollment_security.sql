@@ -517,7 +517,7 @@ CREATE POLICY student_free_self_enroll ON public.lms_enrollments
 
 -- The payment confirmation RPC must never be callable directly by a browser
 -- user, since it changes payment status and creates enrolments.
-REVOKE ALL ON FUNCTION public.confirm_payment_and_enroll(uuid, text, uuid, text) FROM PUBLIC, anon, authenticated;
-GRANT EXECUTE ON FUNCTION public.confirm_payment_and_enroll(uuid, text, uuid, text) TO service_role;
+-- DEFERRED: REVOKE ALL ON FUNCTION public.confirm_payment_and_enroll(uuid, text, uuid, text) FROM PUBLIC, anon, authenticated;
+-- DEFERRED: GRANT EXECUTE ON FUNCTION public.confirm_payment_and_enroll(uuid, text, uuid, text) TO service_role;
 
 COMMIT;

@@ -9,7 +9,14 @@ import { LoadingState, ErrorState, EmptyState } from '../../components/portal/Po
 import { listApplications, updateApplicationStatus } from '../../lib/supabase/admin';
 import { approveApplicationWithAdmission } from '../../lib/supabase/admissions';
 
-const STATUS_OPTIONS = ['submitted', 'under_review', 'additional_info_required', 'accepted', 'rejected', 'enrolled'];
+const STATUS_OPTIONS = ['submitted', 'under_review', 'additional_info_required', 'approved', 'rejected'];
+
+function statusOptionsFor(currentStatus) {
+  // Keep legacy/current terminal states visible without allowing them to be assigned to other records.
+  return currentStatus && !STATUS_OPTIONS.includes(currentStatus)
+    ? [currentStatus, ...STATUS_OPTIONS]
+    : STATUS_OPTIONS;
+}
 
 function ApproveAction({ row, onApprove, busy }) {
   const [copied, setCopied] = useState(false);
@@ -65,6 +72,11 @@ export default function Applications() {
   useEffect(() => { load(); }, []);
 
   async function handleStatusChange(id, status) {
+    // Approval must go through the server-side RPC so number issuance and status change are atomic.
+    if (status === 'approved') {
+      await handleApprove(id);
+      return;
+    }
     try {
       await updateApplicationStatus(id, status);
       load();
@@ -131,7 +143,7 @@ export default function Applications() {
           name={`app-status-${r.id}`}
           value={r.status}
           onChange={(e) => handleStatusChange(r.id, e.target.value)}
-          options={STATUS_OPTIONS}
+          options={statusOptionsFor(r.status)}
           className="min-w-[9rem]"
         />
       ),
@@ -146,7 +158,7 @@ export default function Applications() {
         <p className="font-body text-xs font-semibold uppercase tracking-wider text-gold-600">Admin Panel</p>
         <h1 className="mt-1 font-display text-2xl font-bold text-navy-900 sm:text-3xl">Applications</h1>
         <p className="mt-2 font-body text-sm text-navy-500">
-          Click <strong>Approve &amp; Issue</strong> to accept an application and generate the
+          Click <strong>Approve &amp; Issue</strong> to approve an application and generate the
             student&rsquo;s course-based admission number (ISG + course code + year + serial). The student then registers at{' '}
           <code className="rounded bg-navy-50 px-1 py-0.5 font-mono text-[11px]">/register</code> using
           that number.

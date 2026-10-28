@@ -25,7 +25,7 @@ export default function Pathways() {
         <SectionHeading
           eyebrow="In-Demand Skills"
           title="Skills Employers Are Hiring For Right Now"
-          subtitle="Courses pulled from our live catalogue and matched to current employer demand in Kenya and worldwide — communication, digital, business, creative, life skills and education."
+          subtitle="Courses from our live catalogue, matched to current employer demand in Kenya and worldwide across communication, digital skills, business, creative fields, life skills and education."
         />
 
         {/* Category badges */}

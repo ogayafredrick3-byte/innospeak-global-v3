@@ -105,7 +105,7 @@ export default function ForEmployers() {
           <SectionHeading
             eyebrow="What You Get"
             title="Four ways to work with InnoSpeak talent"
-            subtitle="From one-off projects to long-term pipelines — pick the engagement that fits your needs."
+            subtitle="Choose the engagement that fits your needs, from one-off projects to long-term talent pipelines."
           />
 
           <motion.div
@@ -142,7 +142,7 @@ export default function ForEmployers() {
           <SectionHeading
             eyebrow="How It Works"
             title="From sign-up to shortlist in four steps"
-            subtitle="A lightweight workflow designed for real organisations — no heavy setup."
+            subtitle="A straightforward workflow for real organisations, with no complicated setup."
           />
 
           <motion.ol
@@ -182,7 +182,7 @@ export default function ForEmployers() {
               Access the Employer Portal
             </h2>
             <p className="mt-5 font-body text-base leading-[1.7] text-navy-200">
-              Get in touch to request employer access — our team will set up your
+              Get in touch to request employer access. Our team will set up your
               organisation and give you a portal account.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">

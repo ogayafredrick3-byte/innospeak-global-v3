@@ -451,7 +451,7 @@ export default function CareerProfile() {
     <>
       <Seo
         title="My Career Profile"
-        description="Your professional identity — skills, credentials, projects, goals and mentorship."
+        description="Your professional identity, including skills, credentials, projects, goals and mentorship."
         path="/learn/career"
       />
 
@@ -465,7 +465,7 @@ export default function CareerProfile() {
             My Career Profile
           </h1>
           <p className="mt-2 max-w-2xl font-body text-sm leading-6 text-navy-500">
-            A professional identity that grows with you — aggregated from your
+            A professional identity that grows with you, bringing together your
             learning, projects, credentials and goals across InnoSpeak Global.
           </p>
         </div>

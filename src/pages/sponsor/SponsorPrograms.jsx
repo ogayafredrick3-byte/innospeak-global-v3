@@ -57,7 +57,7 @@ export default function SponsorPrograms() {
           Programs I Support
         </h1>
         <p className="mt-2 max-w-2xl font-body text-sm text-navy-500">
-          Each Foundation program targets a different barrier — education access,
+          Each Foundation programme targets a different barrier, including education access,
           digital inequality, girls in STEM, and community-led impact.
         </p>
       </div>
