@@ -4,15 +4,8 @@ import AppLayout from './components/layout/AppLayout.jsx';
 import ProtectedRoute from './components/auth/ProtectedRoute.jsx';
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
-import Academy from './pages/Academy.jsx';
-import GradeDetail from './pages/GradeDetail.jsx';
-import Programs from './pages/Programs.jsx';
-import ProgramDetails from './pages/ProgramDetails.jsx';
-import CourseCatalog from './pages/CourseCatalog.jsx';
-import CourseDetails from './pages/CourseDetails.jsx';
 import Foundation from './pages/Foundation.jsx';
 import FoundationEvents from './pages/FoundationEvents.jsx';
-import Labs from './pages/Labs.jsx';
 import Founder from './pages/Founder.jsx';
 import Impact from './pages/Impact.jsx';
 import Contact from './pages/Contact.jsx';
@@ -29,7 +22,7 @@ import Privacy from './pages/Privacy.jsx';
 import Terms from './pages/Terms.jsx';
 import Login from './pages/auth/Login.jsx';
 import Signup from './pages/auth/Signup.jsx';
-import Register from './pages/Register.jsx';                            // ← ADDED
+import Register from './pages/Register.jsx';                            
 import ForgotPassword from './pages/auth/ForgotPassword.jsx';
 import ResetPassword from './pages/auth/ResetPassword.jsx';
 import StudentDashboard from './pages/portal/StudentDashboard.jsx';
@@ -98,7 +91,6 @@ import LearnShell from './components/learn/LearnShell.jsx';
 import LearnDashboard from './pages/learn/LearnDashboard.jsx';
 import CareerProfile from './pages/learn/CareerProfile.jsx';
 import MyApplications from './pages/learn/MyApplications.jsx';
-import Catalog from './pages/learn/Catalog.jsx';
 import Sessions from './pages/learn/Sessions.jsx';
 import Calendar from './pages/learn/Calendar.jsx';
 import Portfolio from './pages/learn/Portfolio.jsx';
@@ -149,15 +141,11 @@ export default function App() {
         <Route element={<AppLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/academy" element={<Academy />} />
-          <Route path="/academy/cbe/:gradeCode" element={<GradeDetail />} />
-          <Route path="/programs" element={<Programs />} />
-          <Route path="/programs/:slug" element={<ProgramDetails />} />
-          <Route path="/courses" element={<CourseCatalog />} />
-          <Route path="/courses/:courseCode" element={<CourseDetails />} />
+          
+          {/* ALL COURSE ROUTES HAVE BEEN PURGED FOR REBUILD */}
+          
           <Route path="/foundation" element={<Foundation />} />
           <Route path="/foundation/events" element={<FoundationEvents />} />
-          <Route path="/labs" element={<Labs />} />
           <Route path="/founder" element={<Founder />} />
           <Route path="/impact" element={<Impact />} />
           <Route path="/contact" element={<Contact />} />
@@ -185,7 +173,7 @@ export default function App() {
           {/* Auth */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/register" element={<Register />} />                       {/* ← ADDED */}
+          <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
 
@@ -280,7 +268,6 @@ export default function App() {
               <Route index element={<LearnDashboard />} />
               <Route path="career" element={<CareerProfile />} />
               <Route path="applications" element={<MyApplications />} />
-              <Route path="catalog" element={<Catalog />} />
               <Route path="sessions" element={<Sessions />} />
               <Route path="calendar" element={<Calendar />} />
               <Route path="portfolio" element={<Portfolio />} />

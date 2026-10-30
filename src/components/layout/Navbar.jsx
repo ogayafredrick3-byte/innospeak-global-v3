@@ -27,7 +27,7 @@ const DARK_HERO_PATHS = new Set([
   '/programs',
 ]);
 
-const exploreLinks = [
+
   { label: 'Academy', to: '/academy', icon: GraduationCap, description: 'Structured courses & certification' },
   { label: 'Labs', to: '/labs', icon: FlaskConical, description: 'Practical engineering & innovation' },
   { label: 'Foundation', to: '/foundation', icon: HeartHandshake, description: 'Scholarships & educational support' },
