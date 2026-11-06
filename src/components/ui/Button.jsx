@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const baseClasses = {
@@ -23,38 +22,21 @@ export default function Button({
 
   if (to) {
     return (
-      <motion.div
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.97 }}
-        className="inline-block"
-      >
-        <Link to={to} className={classes} {...props}>
-          {children}
-        </Link>
-      </motion.div>
+      <Link to={to} className={classes} {...props}>
+        {children}
+      </Link>
     );
   }
   if (href) {
     return (
-      <motion.a
-        href={href}
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.97 }}
-        className={classes}
-        {...props}
-      >
+      <a href={href} className={classes} {...props}>
         {children}
-      </motion.a>
+      </a>
     );
   }
   return (
-    <motion.button
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
-      className={classes}
-      {...props}
-    >
+    <button className={classes} {...props}>
       {children}
-    </motion.button>
+    </button>
   );
 }

@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useRef, useState, useCallback } from 'react';
+import { createContext, useContext, useEffect, useRef, useState, useCallback, useMemo } from 'react';
 import { supabase } from '../lib/supabase/client';
 import { getProfile, signOutUser, isAuthConfigured } from '../lib/supabase/auth';
 
@@ -38,8 +38,6 @@ export function AuthProvider({ children }) {
       setLoading(false);
     });
 
-    // The subscription is registered before getSession so an auth event cannot
-    // be overwritten by a slower initial-session request.
     supabase.auth.getSession()
       .then(({ data, error }) => {
         if (!mounted || authEventSeen.current) return;
@@ -101,15 +99,18 @@ export function AuthProvider({ children }) {
     setLoading(false);
   }, []);
 
-  const value = {
-    user: session?.user ?? null,
-    session,
-    profile,
-    loading,
-    profileLoading,
-    signOut,
-    isConfigured: configured,
-  };
+  const value = useMemo(
+    () => ({
+      user: session?.user ?? null,
+      session,
+      profile,
+      loading,
+      profileLoading,
+      signOut,
+      isConfigured: configured,
+    }),
+    [session, profile, loading, profileLoading, signOut, configured],
+  );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

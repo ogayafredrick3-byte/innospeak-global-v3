@@ -1,331 +1,354 @@
-import { Routes, Route } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext.jsx';
 import AppLayout from './components/layout/AppLayout.jsx';
 import ProtectedRoute from './components/auth/ProtectedRoute.jsx';
-import Home from './pages/Home.jsx';
-import About from './pages/About.jsx';
-import Foundation from './pages/Foundation.jsx';
-import FoundationEvents from './pages/FoundationEvents.jsx';
-import Founder from './pages/Founder.jsx';
-import Impact from './pages/Impact.jsx';
-import Contact from './pages/Contact.jsx';
-import Apply from './pages/Apply.jsx';
-import Research from './pages/Research.jsx';
-import Tutor from './pages/Tutor.jsx';
-import News from './pages/News.jsx';
-import Events from './pages/Events.jsx';
-import Community from './pages/Community.jsx';
-import Partnerships from './pages/Partnerships.jsx';
-import Careers from './pages/Careers.jsx';
-import FAQ from './pages/FAQ.jsx';
-import Privacy from './pages/Privacy.jsx';
-import Terms from './pages/Terms.jsx';
-import Login from './pages/auth/Login.jsx';
-import Signup from './pages/auth/Signup.jsx';
-import Register from './pages/Register.jsx';
-import Academy from './pages/Academy.jsx';
-import AcademyCbe from './pages/AcademyCbe.jsx';
-import AcademyCbeBundle from './pages/AcademyCbeBundle.jsx';
-import AcademyCourseDetail from './pages/AcademyCourseDetail.jsx';
-import Labs from './pages/Labs.jsx';
-import LabCourseDetail from './pages/LabCourseDetail.jsx';
-import MyLearning from './pages/MyLearning.jsx';                            
-import ForgotPassword from './pages/auth/ForgotPassword.jsx';
-import ResetPassword from './pages/auth/ResetPassword.jsx';
-import StudentDashboard from './pages/portal/StudentDashboard.jsx';
-import PortalShell from './components/portal/PortalShell.jsx';
-import Profile from './pages/portal/Profile.jsx';
-import Registration from './pages/portal/Registration.jsx';
-import Records from './pages/portal/Records.jsx';
-import Finance from './pages/portal/Finance.jsx';
-import Timetable from './pages/portal/Timetable.jsx';
-import Attendance from './pages/portal/Attendance.jsx';
-import Exams from './pages/portal/Exams.jsx';
-import Documents from './pages/portal/Documents.jsx';
-import Communication from './pages/portal/Communication.jsx';
-import Requests from './pages/portal/Requests.jsx';
-import Support from './pages/portal/Support.jsx';
-import Graduation from './pages/portal/Graduation.jsx';
-import ChangePassword from './pages/portal/ChangePassword.jsx';
-import MyProgress from './pages/portal/MyProgress.jsx';
-import FoundationApplications from './pages/portal/FoundationApplications.jsx';
-import FoundationApplicationDetail from './pages/portal/FoundationApplicationDetail.jsx';
-import SponsorShell from './components/sponsor/SponsorShell.jsx';
-import SponsorSignIn from './pages/sponsor/SponsorSignIn.jsx';
-import SponsorDashboard from './pages/sponsor/SponsorDashboard.jsx';
-import SponsorPrograms from './pages/sponsor/SponsorPrograms.jsx';
-import SponsorContributions from './pages/sponsor/SponsorContributions.jsx';
-import SponsorImpact from './pages/sponsor/SponsorImpact.jsx';
-import AdminRoute from './components/auth/AdminRoute.jsx';
-import AdminShell from './components/admin/AdminShell.jsx';
-import AdminDashboard from './pages/admin/AdminDashboard.jsx';
-import AdminStudents from './pages/admin/Students.jsx';
-import AdminStudentDetail from './pages/admin/StudentDetail.jsx';
-import AdminApplications from './pages/admin/Applications.jsx';
-import AdminContactMessages from './pages/admin/ContactMessages.jsx';
-import AdminPrograms from './pages/admin/Programs.jsx';
-import AdminSemesters from './pages/admin/Semesters.jsx';
-import AdminUnits from './pages/admin/Units.jsx';
-import AdminTimetableExams from './pages/admin/TimetableExams.jsx';
-import AdminFeeStructures from './pages/admin/FeeStructures.jsx';
-import AdminRequests from './pages/admin/Requests.jsx';
-import AdminSupport from './pages/admin/Support.jsx';
-import AdminGraduation from './pages/admin/Graduation.jsx';
-import AdminAnnouncements from './pages/admin/Announcements.jsx';
-import AdminLmsOverview from './pages/admin/LmsOverview.jsx';
-import AdminCohorts from './pages/admin/Cohorts.jsx';
-import AdminCareerOpportunities from './pages/admin/CareerOpportunities.jsx';
-import CareerApplications from './pages/admin/CareerApplications.jsx';
-import InstructorRoute from './components/auth/InstructorRoute.jsx';
-import TeachShell from './components/teach/TeachShell.jsx';
-import TeachOverview from './pages/teach/TeachOverview.jsx';
-import TeachProfile from './pages/teach/TeachProfile.jsx';
-import MyCourses from './pages/teach/MyCourses.jsx';
-import CreateCourse from './pages/teach/CreateCourse.jsx';
-import TeachStudents from './pages/teach/TeachStudents.jsx';
-import LearningMaterials from './pages/teach/LearningMaterials.jsx';
-import Assignments from './pages/teach/Assignments.jsx';
-import Assessments from './pages/teach/Assessments.jsx';
-import TeachMessages from './pages/teach/TeachMessages.jsx';
-import TeachNotifications from './pages/teach/TeachNotifications.jsx';
-import TeachSettings from './pages/teach/TeachSettings.jsx';
-import CourseBuilder from './pages/teach/CourseBuilder.jsx';
-import LessonContentBuilder from './pages/teach/LessonContentBuilder.jsx';
-import Submissions from './pages/teach/Submissions.jsx';
-import SessionsManager from './pages/teach/SessionsManager.jsx';
-import Gradebook from './pages/teach/Gradebook.jsx';
-import LearnShell from './components/learn/LearnShell.jsx';
-import LearnDashboard from './pages/learn/LearnDashboard.jsx';
-import CareerProfile from './pages/learn/CareerProfile.jsx';
-import MyApplications from './pages/learn/MyApplications.jsx';
-import Sessions from './pages/learn/Sessions.jsx';
-import Calendar from './pages/learn/Calendar.jsx';
-import Portfolio from './pages/learn/Portfolio.jsx';
-import Goals from './pages/learn/Goals.jsx';
-import Projects from './pages/learn/Projects.jsx';
-import Mentorship from './pages/learn/Mentorship.jsx';
-import Certificates from './pages/learn/Certificates.jsx';
-import CertificateVerify from './pages/learn/CertificateVerify.jsx';
-import CareerHub from './pages/CareerHub.jsx';
-import Opportunities from './pages/career/Opportunities.jsx';
-import OpportunityDetail from './pages/career/OpportunityDetail.jsx';
-import Connections from './pages/career/Connections.jsx';
-import LearningPlayer from './pages/learn/LearningPlayer.jsx';
-import AssignmentView from './pages/learn/AssignmentView.jsx';
-import QuizAttempt from './pages/learn/QuizAttempt.jsx';
-import BecomeTutor from './pages/BecomeTutor.jsx';
-import AdminTutorApplications from './pages/admin/TutorApplications.jsx';
-import AdminCourseReview from './pages/admin/CourseReview.jsx';
-import AdminCertificates from './pages/admin/Certificates.jsx';
-import AdminPayments from './pages/admin/Payments.jsx';
-import AdminFoundationApplications from './pages/admin/FoundationApplications.jsx';
-import AdminFoundationApplicationDetail from './pages/admin/FoundationApplicationDetail.jsx';
-import AdminFoundationStories from './pages/admin/FoundationStories.jsx';
-import AdminFoundationInitiatives from './pages/admin/FoundationInitiatives.jsx';
-import AdminFoundationEvents from './pages/admin/FoundationEvents.jsx';
-import AdminFoundationEventEditor from './pages/admin/FoundationEventEditor.jsx';
-import AdminFoundationSponsors from './pages/admin/FoundationSponsors.jsx';
-import AdminFoundationContributions from './pages/admin/FoundationContributions.jsx';
-import AdminFoundationDisbursements from './pages/admin/FoundationDisbursements.jsx';
-import AdminFoundationProgressReports from './pages/admin/FoundationProgressReports.jsx';
-import ForEmployers from './pages/ForEmployers.jsx';
-import EmployerRoute from './components/auth/EmployerRoute.jsx';
-import EmployerShell from './components/employer/EmployerShell.jsx';
-import EmployerOverview from './pages/employer/EmployerOverview.jsx';
-import EmployerOpportunities from './pages/employer/EmployerOpportunities.jsx';
-import EmployerOpportunityEditor from './pages/employer/EmployerOpportunityEditor.jsx';
-import EmployerApplications from './pages/employer/EmployerApplications.jsx';
-import OrganisationProfile from './pages/employer/OrganisationProfile.jsx';
-import NotFound from './pages/NotFound.jsx';
-import PaymentReturn from './pages/PaymentReturn.jsx';
 import RouteErrorBoundary from './components/ui/RouteErrorBoundary.jsx';
+
+// ── Eagerly-loaded: tiny, always-visible, or needed for first paint ──
+import Home from './pages/Home.jsx';
+import NotFound from './pages/NotFound.jsx';
+
+// ── Lazy-loaded: everything else, split by route group ──
+const About = lazy(() => import('./pages/About.jsx'));
+const Foundation = lazy(() => import('./pages/Foundation.jsx'));
+const FoundationEvents = lazy(() => import('./pages/FoundationEvents.jsx'));
+const Founder = lazy(() => import('./pages/Founder.jsx'));
+const Impact = lazy(() => import('./pages/Impact.jsx'));
+const Contact = lazy(() => import('./pages/Contact.jsx'));
+const Apply = lazy(() => import('./pages/Apply.jsx'));
+const Research = lazy(() => import('./pages/Research.jsx'));
+const Tutor = lazy(() => import('./pages/Tutor.jsx'));
+const News = lazy(() => import('./pages/News.jsx'));
+const Events = lazy(() => import('./pages/Events.jsx'));
+const Community = lazy(() => import('./pages/Community.jsx'));
+const Partnerships = lazy(() => import('./pages/Partnerships.jsx'));
+const Careers = lazy(() => import('./pages/Careers.jsx'));
+const FAQ = lazy(() => import('./pages/FAQ.jsx'));
+const Privacy = lazy(() => import('./pages/Privacy.jsx'));
+const Terms = lazy(() => import('./pages/Terms.jsx'));
+const Login = lazy(() => import('./pages/auth/Login.jsx'));
+const Signup = lazy(() => import('./pages/auth/Signup.jsx'));
+const Register = lazy(() => import('./pages/Register.jsx'));
+const ForgotPassword = lazy(() => import('./pages/auth/ForgotPassword.jsx'));
+const ResetPassword = lazy(() => import('./pages/auth/ResetPassword.jsx'));
+const Academy = lazy(() => import('./pages/Academy.jsx'));
+const AcademyCbe = lazy(() => import('./pages/AcademyCbe.jsx'));
+const AcademyCbeBundle = lazy(() => import('./pages/AcademyCbeBundle.jsx'));
+const AcademyCourseDetail = lazy(() => import('./pages/AcademyCourseDetail.jsx'));
+const Labs = lazy(() => import('./pages/Labs.jsx'));
+const LabCourseDetail = lazy(() => import('./pages/LabCourseDetail.jsx'));
+const MyLearning = lazy(() => import('./pages/MyLearning.jsx'));
+const BecomeTutor = lazy(() => import('./pages/BecomeTutor.jsx'));
+const CareerHub = lazy(() => import('./pages/CareerHub.jsx'));
+const ForEmployers = lazy(() => import('./pages/ForEmployers.jsx'));
+const PaymentReturn = lazy(() => import('./pages/PaymentReturn.jsx'));
+
+// Sponsor portal
+const SponsorShell = lazy(() => import('./components/sponsor/SponsorShell.jsx'));
+const SponsorSignIn = lazy(() => import('./pages/sponsor/SponsorSignIn.jsx'));
+const SponsorDashboard = lazy(() => import('./pages/sponsor/SponsorDashboard.jsx'));
+const SponsorPrograms = lazy(() => import('./pages/sponsor/SponsorPrograms.jsx'));
+const SponsorContributions = lazy(() => import('./pages/sponsor/SponsorContributions.jsx'));
+const SponsorImpact = lazy(() => import('./pages/sponsor/SponsorImpact.jsx'));
+
+// Employer portal
+const EmployerRoute = lazy(() => import('./components/auth/EmployerRoute.jsx'));
+const EmployerShell = lazy(() => import('./components/employer/EmployerShell.jsx'));
+const EmployerOverview = lazy(() => import('./pages/employer/EmployerOverview.jsx'));
+const EmployerOpportunities = lazy(() => import('./pages/employer/EmployerOpportunities.jsx'));
+const EmployerOpportunityEditor = lazy(() => import('./pages/employer/EmployerOpportunityEditor.jsx'));
+const EmployerApplications = lazy(() => import('./pages/employer/EmployerApplications.jsx'));
+const OrganisationProfile = lazy(() => import('./pages/employer/OrganisationProfile.jsx'));
+
+// Student portal
+const PortalShell = lazy(() => import('./components/portal/PortalShell.jsx'));
+const StudentDashboard = lazy(() => import('./pages/portal/StudentDashboard.jsx'));
+const Profile = lazy(() => import('./pages/portal/Profile.jsx'));
+const Registration = lazy(() => import('./pages/portal/Registration.jsx'));
+const Records = lazy(() => import('./pages/portal/Records.jsx'));
+const Finance = lazy(() => import('./pages/portal/Finance.jsx'));
+const Timetable = lazy(() => import('./pages/portal/Timetable.jsx'));
+const Attendance = lazy(() => import('./pages/portal/Attendance.jsx'));
+const Exams = lazy(() => import('./pages/portal/Exams.jsx'));
+const Documents = lazy(() => import('./pages/portal/Documents.jsx'));
+const Communication = lazy(() => import('./pages/portal/Communication.jsx'));
+const Requests = lazy(() => import('./pages/portal/Requests.jsx'));
+const Support = lazy(() => import('./pages/portal/Support.jsx'));
+const Graduation = lazy(() => import('./pages/portal/Graduation.jsx'));
+const ChangePassword = lazy(() => import('./pages/portal/ChangePassword.jsx'));
+const MyProgress = lazy(() => import('./pages/portal/MyProgress.jsx'));
+const FoundationApplications = lazy(() => import('./pages/portal/FoundationApplications.jsx'));
+const FoundationApplicationDetail = lazy(() => import('./pages/portal/FoundationApplicationDetail.jsx'));
+
+// Admin panel
+const AdminRoute = lazy(() => import('./components/auth/AdminRoute.jsx'));
+const AdminShell = lazy(() => import('./components/admin/AdminShell.jsx'));
+const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard.jsx'));
+const AdminStudents = lazy(() => import('./pages/admin/Students.jsx'));
+const AdminStudentDetail = lazy(() => import('./pages/admin/StudentDetail.jsx'));
+const AdminApplications = lazy(() => import('./pages/admin/Applications.jsx'));
+const AdminContactMessages = lazy(() => import('./pages/admin/ContactMessages.jsx'));
+const AdminPrograms = lazy(() => import('./pages/admin/Programs.jsx'));
+const AdminSemesters = lazy(() => import('./pages/admin/Semesters.jsx'));
+const AdminUnits = lazy(() => import('./pages/admin/Units.jsx'));
+const AdminTimetableExams = lazy(() => import('./pages/admin/TimetableExams.jsx'));
+const AdminFeeStructures = lazy(() => import('./pages/admin/FeeStructures.jsx'));
+const AdminRequests = lazy(() => import('./pages/admin/Requests.jsx'));
+const AdminSupport = lazy(() => import('./pages/admin/Support.jsx'));
+const AdminGraduation = lazy(() => import('./pages/admin/Graduation.jsx'));
+const AdminAnnouncements = lazy(() => import('./pages/admin/Announcements.jsx'));
+const AdminLmsOverview = lazy(() => import('./pages/admin/LmsOverview.jsx'));
+const AdminCohorts = lazy(() => import('./pages/admin/Cohorts.jsx'));
+const AdminCareerOpportunities = lazy(() => import('./pages/admin/CareerOpportunities.jsx'));
+const CareerApplications = lazy(() => import('./pages/admin/CareerApplications.jsx'));
+const AdminTutorApplications = lazy(() => import('./pages/admin/TutorApplications.jsx'));
+const AdminCourseReview = lazy(() => import('./pages/admin/CourseReview.jsx'));
+const AdminCertificates = lazy(() => import('./pages/admin/Certificates.jsx'));
+const AdminPayments = lazy(() => import('./pages/admin/Payments.jsx'));
+const AdminFoundationApplications = lazy(() => import('./pages/admin/FoundationApplications.jsx'));
+const AdminFoundationApplicationDetail = lazy(() => import('./pages/admin/FoundationApplicationDetail.jsx'));
+const AdminFoundationStories = lazy(() => import('./pages/admin/FoundationStories.jsx'));
+const AdminFoundationInitiatives = lazy(() => import('./pages/admin/FoundationInitiatives.jsx'));
+const AdminFoundationEvents = lazy(() => import('./pages/admin/FoundationEvents.jsx'));
+const AdminFoundationEventEditor = lazy(() => import('./pages/admin/FoundationEventEditor.jsx'));
+const AdminFoundationSponsors = lazy(() => import('./pages/admin/FoundationSponsors.jsx'));
+const AdminFoundationContributions = lazy(() => import('./pages/admin/FoundationContributions.jsx'));
+const AdminFoundationDisbursements = lazy(() => import('./pages/admin/FoundationDisbursements.jsx'));
+const AdminFoundationProgressReports = lazy(() => import('./pages/admin/FoundationProgressReports.jsx'));
+
+// LMS — student learning
+const LearnShell = lazy(() => import('./components/learn/LearnShell.jsx'));
+const LearnDashboard = lazy(() => import('./pages/learn/LearnDashboard.jsx'));
+const CareerProfile = lazy(() => import('./pages/learn/CareerProfile.jsx'));
+const MyApplications = lazy(() => import('./pages/learn/MyApplications.jsx'));
+const Sessions = lazy(() => import('./pages/learn/Sessions.jsx'));
+const Calendar = lazy(() => import('./pages/learn/Calendar.jsx'));
+const Portfolio = lazy(() => import('./pages/learn/Portfolio.jsx'));
+const Goals = lazy(() => import('./pages/learn/Goals.jsx'));
+const Projects = lazy(() => import('./pages/learn/Projects.jsx'));
+const Mentorship = lazy(() => import('./pages/learn/Mentorship.jsx'));
+const Certificates = lazy(() => import('./pages/learn/Certificates.jsx'));
+const CertificateVerify = lazy(() => import('./pages/learn/CertificateVerify.jsx'));
+const LearningPlayer = lazy(() => import('./pages/learn/LearningPlayer.jsx'));
+const AssignmentView = lazy(() => import('./pages/learn/AssignmentView.jsx'));
+const QuizAttempt = lazy(() => import('./pages/learn/QuizAttempt.jsx'));
+
+// LMS — instructor teaching
+const InstructorRoute = lazy(() => import('./components/auth/InstructorRoute.jsx'));
+const TeachShell = lazy(() => import('./components/teach/TeachShell.jsx'));
+const TeachOverview = lazy(() => import('./pages/teach/TeachOverview.jsx'));
+const TeachProfile = lazy(() => import('./pages/teach/TeachProfile.jsx'));
+const MyCourses = lazy(() => import('./pages/teach/MyCourses.jsx'));
+const CreateCourse = lazy(() => import('./pages/teach/CreateCourse.jsx'));
+const TeachStudents = lazy(() => import('./pages/teach/TeachStudents.jsx'));
+const LearningMaterials = lazy(() => import('./pages/teach/LearningMaterials.jsx'));
+const Assignments = lazy(() => import('./pages/teach/Assignments.jsx'));
+const Assessments = lazy(() => import('./pages/teach/Assessments.jsx'));
+const TeachMessages = lazy(() => import('./pages/teach/TeachMessages.jsx'));
+const TeachNotifications = lazy(() => import('./pages/teach/TeachNotifications.jsx'));
+const TeachSettings = lazy(() => import('./pages/teach/TeachSettings.jsx'));
+const CourseBuilder = lazy(() => import('./pages/teach/CourseBuilder.jsx'));
+const LessonContentBuilder = lazy(() => import('./pages/teach/LessonContentBuilder.jsx'));
+const Submissions = lazy(() => import('./pages/teach/Submissions.jsx'));
+const SessionsManager = lazy(() => import('./pages/teach/SessionsManager.jsx'));
+const Gradebook = lazy(() => import('./pages/teach/Gradebook.jsx'));
+
+// Career
+const Opportunities = lazy(() => import('./pages/career/Opportunities.jsx'));
+const OpportunityDetail = lazy(() => import('./pages/career/OpportunityDetail.jsx'));
+const Connections = lazy(() => import('./pages/career/Connections.jsx'));
+
+const PageFallback = () => (
+  <div className="flex min-h-[50vh] items-center justify-center" aria-live="polite">
+    <div className="h-8 w-8 animate-spin rounded-full border-2 border-navy-200 border-t-gold-500" />
+  </div>
+);
 
 export default function App() {
   return (
     <AuthProvider>
       <RouteErrorBoundary>
-      <Routes>
-        <Route element={<AppLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          
-          {/* ALL COURSE ROUTES HAVE BEEN PURGED FOR REBUILD */}
+        <Routes>
+          <Route element={<AppLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<Suspense fallback={<PageFallback />}><About /></Suspense>} />
 
-          {/* Academy */}
-          <Route path="/academy" element={<Academy />} />
-          <Route path="/academy/cbe" element={<AcademyCbe />} />
-          <Route path="/academy/cbe/:bundleSlug" element={<AcademyCbeBundle />} />
-          <Route path="/academy/:slug" element={<AcademyCourseDetail />} />
+            {/* Academy */}
+            <Route path="/academy" element={<Suspense fallback={<PageFallback />}><Academy /></Suspense>} />
+            <Route path="/academy/cbe" element={<Suspense fallback={<PageFallback />}><AcademyCbe /></Suspense>} />
+            <Route path="/academy/cbe/:bundleSlug" element={<Suspense fallback={<PageFallback />}><AcademyCbeBundle /></Suspense>} />
+            <Route path="/academy/:slug" element={<Suspense fallback={<PageFallback />}><AcademyCourseDetail /></Suspense>} />
 
-          {/* Labs */}
-          <Route path="/labs" element={<Labs />} />
-          <Route path="/labs/:slug" element={<LabCourseDetail />} />
+            {/* Labs */}
+            <Route path="/labs" element={<Suspense fallback={<PageFallback />}><Labs /></Suspense>} />
+            <Route path="/labs/:slug" element={<Suspense fallback={<PageFallback />}><LabCourseDetail /></Suspense>} />
 
-          <Route path="/my-learning" element={<MyLearning />} />
+            <Route path="/my-learning" element={<Suspense fallback={<PageFallback />}><MyLearning /></Suspense>} />
 
-          <Route path="/foundation" element={<Foundation />} />
-          <Route path="/foundation/events" element={<FoundationEvents />} />
-          <Route path="/founder" element={<Founder />} />
-          <Route path="/impact" element={<Impact />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/apply" element={<Apply />} />
-          <Route path="/become-tutor" element={<BecomeTutor />} />
-          <Route path="/research" element={<Research />} />
-          <Route path="/tutor" element={<Tutor />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/community" element={<Community />} />
-          <Route path="/partnerships" element={<Partnerships />} />
-          <Route path="/careers" element={<Careers />} />
-          <Route path="/career-hub" element={<CareerHub />} />
-          <Route path="/career-hub/opportunities" element={<Opportunities />} />
-          <Route path="/career-hub/opportunities/:id" element={<OpportunityDetail />} />
-          <Route path="/career-hub/connections" element={<Connections />} />
-          <Route path="/for-employers" element={<ForEmployers />} />
-          <Route path="/verify-certificate" element={<CertificateVerify />} />
-          <Route path="/verify-certificate/:certificateId" element={<CertificateVerify />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/payment-return" element={<PaymentReturn />} />
+            <Route path="/foundation" element={<Suspense fallback={<PageFallback />}><Foundation /></Suspense>} />
+            <Route path="/foundation/events" element={<Suspense fallback={<PageFallback />}><FoundationEvents /></Suspense>} />
+            <Route path="/founder" element={<Suspense fallback={<PageFallback />}><Founder /></Suspense>} />
+            <Route path="/impact" element={<Suspense fallback={<PageFallback />}><Impact /></Suspense>} />
+            <Route path="/contact" element={<Suspense fallback={<PageFallback />}><Contact /></Suspense>} />
+            <Route path="/apply" element={<Suspense fallback={<PageFallback />}><Apply /></Suspense>} />
+            <Route path="/become-tutor" element={<Suspense fallback={<PageFallback />}><BecomeTutor /></Suspense>} />
+            <Route path="/research" element={<Suspense fallback={<PageFallback />}><Research /></Suspense>} />
+            <Route path="/tutor" element={<Suspense fallback={<PageFallback />}><Tutor /></Suspense>} />
+            <Route path="/news" element={<Suspense fallback={<PageFallback />}><News /></Suspense>} />
+            <Route path="/events" element={<Suspense fallback={<PageFallback />}><Events /></Suspense>} />
+            <Route path="/community" element={<Suspense fallback={<PageFallback />}><Community /></Suspense>} />
+            <Route path="/partnerships" element={<Suspense fallback={<PageFallback />}><Partnerships /></Suspense>} />
+            <Route path="/careers" element={<Suspense fallback={<PageFallback />}><Careers /></Suspense>} />
+            <Route path="/career-hub" element={<Suspense fallback={<PageFallback />}><CareerHub /></Suspense>} />
+            <Route path="/career-hub/opportunities" element={<Suspense fallback={<PageFallback />}><Opportunities /></Suspense>} />
+            <Route path="/career-hub/opportunities/:id" element={<Suspense fallback={<PageFallback />}><OpportunityDetail /></Suspense>} />
+            <Route path="/career-hub/connections" element={<Suspense fallback={<PageFallback />}><Connections /></Suspense>} />
+            <Route path="/for-employers" element={<Suspense fallback={<PageFallback />}><ForEmployers /></Suspense>} />
+            <Route path="/verify-certificate" element={<Suspense fallback={<PageFallback />}><CertificateVerify /></Suspense>} />
+            <Route path="/verify-certificate/:certificateId" element={<Suspense fallback={<PageFallback />}><CertificateVerify /></Suspense>} />
+            <Route path="/faq" element={<Suspense fallback={<PageFallback />}><FAQ /></Suspense>} />
+            <Route path="/privacy" element={<Suspense fallback={<PageFallback />}><Privacy /></Suspense>} />
+            <Route path="/terms" element={<Suspense fallback={<PageFallback />}><Terms /></Suspense>} />
+            <Route path="/payment-return" element={<Suspense fallback={<PageFallback />}><PaymentReturn /></Suspense>} />
 
-          {/* Auth */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
+            {/* Auth */}
+            <Route path="/login" element={<Suspense fallback={<PageFallback />}><Login /></Suspense>} />
+            <Route path="/signup" element={<Suspense fallback={<PageFallback />}><Signup /></Suspense>} />
+            <Route path="/register" element={<Suspense fallback={<PageFallback />}><Register /></Suspense>} />
+            <Route path="/forgot-password" element={<Suspense fallback={<PageFallback />}><ForgotPassword /></Suspense>} />
+            <Route path="/reset-password" element={<Suspense fallback={<PageFallback />}><ResetPassword /></Suspense>} />
 
-          {/* Sponsor Portal */}
-          <Route path="/sponsor/signin" element={<SponsorSignIn />} />
-          <Route path="/sponsor" element={<SponsorShell />}>
-            <Route index element={<SponsorDashboard />} />
-            <Route path="programs" element={<SponsorPrograms />} />
-            <Route path="contributions" element={<SponsorContributions />} />
-            <Route path="impact" element={<SponsorImpact />} />
-          </Route>
-
-          {/* Employer Portal */}
-          <Route element={<EmployerRoute />}>
-            <Route path="/employer" element={<EmployerShell />}>
-              <Route index element={<EmployerOverview />} />
-              <Route path="opportunities" element={<EmployerOpportunities />} />
-              <Route path="opportunities/new" element={<EmployerOpportunityEditor />} />
-              <Route path="opportunities/:id" element={<EmployerOpportunityEditor />} />
-              <Route path="applications" element={<EmployerApplications />} />
-              <Route path="profile" element={<OrganisationProfile />} />
+            {/* Sponsor Portal */}
+            <Route path="/sponsor/signin" element={<Suspense fallback={<PageFallback />}><SponsorSignIn /></Suspense>} />
+            <Route path="/sponsor" element={<Suspense fallback={<PageFallback />}><SponsorShell />}>
+              <Route index element={<SponsorDashboard />} />
+              <Route path="programs" element={<SponsorPrograms />} />
+              <Route path="contributions" element={<SponsorContributions />} />
+              <Route path="impact" element={<SponsorImpact />} />
             </Route>
-          </Route>
 
-          {/* Student portal (requires login) */}
-          <Route element={<ProtectedRoute />}>
-            <Route path="/portal" element={<PortalShell />}>
-              <Route index element={<StudentDashboard />} />
-              <Route path="profile" element={<Profile />} />
-              <Route path="registration" element={<Registration />} />
-              <Route path="records" element={<Records />} />
-              <Route path="foundation" element={<FoundationApplications />} />
-              <Route path="foundation/:id" element={<FoundationApplicationDetail />} />
-              <Route path="progress" element={<MyProgress />} />
-              <Route path="progress/:courseId" element={<MyProgress />} />
-              <Route path="finance" element={<Finance />} />
-              <Route path="timetable" element={<Timetable />} />
-              <Route path="attendance" element={<Attendance />} />
-              <Route path="exams" element={<Exams />} />
-              <Route path="documents" element={<Documents />} />
-              <Route path="communication" element={<Communication />} />
-              <Route path="requests" element={<Requests />} />
-              <Route path="support" element={<Support />} />
-              <Route path="graduation" element={<Graduation />} />
-              <Route path="change-password" element={<ChangePassword />} />
+            {/* Employer Portal */}
+            <Route element={<Suspense fallback={<PageFallback />}><EmployerRoute /></Suspense>}>
+              <Route path="/employer" element={<EmployerShell />}>
+                <Route index element={<EmployerOverview />} />
+                <Route path="opportunities" element={<EmployerOpportunities />} />
+                <Route path="opportunities/new" element={<EmployerOpportunityEditor />} />
+                <Route path="opportunities/:id" element={<EmployerOpportunityEditor />} />
+                <Route path="applications" element={<EmployerApplications />} />
+                <Route path="profile" element={<OrganisationProfile />} />
+              </Route>
             </Route>
-          </Route>
 
-          {/* Admin panel (requires admin role) */}
-          <Route element={<AdminRoute />}>
-            <Route path="/admin" element={<AdminShell />}>
-              <Route index element={<AdminDashboard />} />
-              <Route path="students" element={<AdminStudents />} />
-              <Route path="students/:id" element={<AdminStudentDetail />} />
-              <Route path="applications" element={<AdminApplications />} />
-              <Route path="tutor-applications" element={<AdminTutorApplications />} />
-              <Route path="course-review" element={<AdminCourseReview />} />
-              <Route path="messages" element={<AdminContactMessages />} />
-              <Route path="programs" element={<AdminPrograms />} />
-              <Route path="semesters" element={<AdminSemesters />} />
-              <Route path="units" element={<AdminUnits />} />
-              <Route path="timetable-exams" element={<AdminTimetableExams />} />
-              <Route path="fees" element={<AdminFeeStructures />} />
-              <Route path="requests" element={<AdminRequests />} />
-              <Route path="support" element={<AdminSupport />} />
-              <Route path="graduation" element={<AdminGraduation />} />
-              <Route path="announcements" element={<AdminAnnouncements />} />
-              <Route path="cohorts" element={<AdminCohorts />} />
-              <Route path="career-opportunities" element={<AdminCareerOpportunities />} />
-              <Route path="career-applications" element={<CareerApplications />} />
-              <Route path="lms" element={<AdminLmsOverview />} />
-              <Route path="certificates" element={<AdminCertificates />} />
-              <Route path="payments" element={<AdminPayments />} />
-
-              {/* Foundation */}
-              <Route path="foundation/applications" element={<AdminFoundationApplications />} />
-              <Route path="foundation/applications/:id" element={<AdminFoundationApplicationDetail />} />
-              <Route path="foundation/stories" element={<AdminFoundationStories />} />
-              <Route path="foundation/initiatives" element={<AdminFoundationInitiatives />} />
-              <Route path="foundation/events" element={<AdminFoundationEvents />} />
-              <Route path="foundation/events/:id" element={<AdminFoundationEventEditor />} />
-              <Route path="foundation/sponsors" element={<AdminFoundationSponsors />} />
-              <Route path="foundation/contributions" element={<AdminFoundationContributions />} />
-              <Route path="foundation/disbursements" element={<AdminFoundationDisbursements />} />
-              <Route path="foundation/progress-reports" element={<AdminFoundationProgressReports />} />
+            {/* Student portal (requires login) */}
+            <Route element={<ProtectedRoute />}>
+              <Route path="/portal" element={<Suspense fallback={<PageFallback />}><PortalShell /></Suspense>}>
+                <Route index element={<StudentDashboard />} />
+                <Route path="profile" element={<Profile />} />
+                <Route path="registration" element={<Registration />} />
+                <Route path="records" element={<Records />} />
+                <Route path="foundation" element={<FoundationApplications />} />
+                <Route path="foundation/:id" element={<FoundationApplicationDetail />} />
+                <Route path="progress" element={<MyProgress />} />
+                <Route path="progress/:courseId" element={<MyProgress />} />
+                <Route path="finance" element={<Finance />} />
+                <Route path="timetable" element={<Timetable />} />
+                <Route path="attendance" element={<Attendance />} />
+                <Route path="exams" element={<Exams />} />
+                <Route path="documents" element={<Documents />} />
+                <Route path="communication" element={<Communication />} />
+                <Route path="requests" element={<Requests />} />
+                <Route path="support" element={<Support />} />
+                <Route path="graduation" element={<Graduation />} />
+                <Route path="change-password" element={<ChangePassword />} />
+              </Route>
             </Route>
-          </Route>
 
-          {/* LMS — student learning (any authenticated user) */}
-          <Route element={<ProtectedRoute />}>
-            <Route path="/learn" element={<LearnShell />}>
-              <Route index element={<LearnDashboard />} />
-              <Route path="career" element={<CareerProfile />} />
-              <Route path="applications" element={<MyApplications />} />
-              <Route path="sessions" element={<Sessions />} />
-              <Route path="calendar" element={<Calendar />} />
-              <Route path="portfolio" element={<Portfolio />} />
-              <Route path="goals" element={<Goals />} />
-              <Route path="projects" element={<Projects />} />
-              <Route path="mentorship" element={<Mentorship />} />
-              <Route path="certificates" element={<Certificates />} />
-              <Route path="courses/:courseId" element={<LearningPlayer />} />
-              <Route path="courses/:courseId/lessons/:lessonId" element={<LearningPlayer />} />
-              <Route path="assignments/:assignmentId" element={<AssignmentView />} />
-              <Route path="quizzes/:quizId" element={<QuizAttempt />} />
+            {/* Admin panel (requires admin role) */}
+            <Route element={<Suspense fallback={<PageFallback />}><AdminRoute /></Suspense>}>
+              <Route path="/admin" element={<AdminShell />}>
+                <Route index element={<AdminDashboard />} />
+                <Route path="students" element={<AdminStudents />} />
+                <Route path="students/:id" element={<AdminStudentDetail />} />
+                <Route path="applications" element={<AdminApplications />} />
+                <Route path="tutor-applications" element={<AdminTutorApplications />} />
+                <Route path="course-review" element={<AdminCourseReview />} />
+                <Route path="messages" element={<AdminContactMessages />} />
+                <Route path="programs" element={<AdminPrograms />} />
+                <Route path="semesters" element={<AdminSemesters />} />
+                <Route path="units" element={<AdminUnits />} />
+                <Route path="timetable-exams" element={<AdminTimetableExams />} />
+                <Route path="fees" element={<AdminFeeStructures />} />
+                <Route path="requests" element={<AdminRequests />} />
+                <Route path="support" element={<AdminSupport />} />
+                <Route path="graduation" element={<AdminGraduation />} />
+                <Route path="announcements" element={<AdminAnnouncements />} />
+                <Route path="cohorts" element={<AdminCohorts />} />
+                <Route path="career-opportunities" element={<AdminCareerOpportunities />} />
+                <Route path="career-applications" element={<CareerApplications />} />
+                <Route path="lms" element={<AdminLmsOverview />} />
+                <Route path="certificates" element={<AdminCertificates />} />
+                <Route path="payments" element={<AdminPayments />} />
+
+                {/* Foundation */}
+                <Route path="foundation/applications" element={<AdminFoundationApplications />} />
+                <Route path="foundation/applications/:id" element={<AdminFoundationApplicationDetail />} />
+                <Route path="foundation/stories" element={<AdminFoundationStories />} />
+                <Route path="foundation/initiatives" element={<AdminFoundationInitiatives />} />
+                <Route path="foundation/events" element={<AdminFoundationEvents />} />
+                <Route path="foundation/events/:id" element={<AdminFoundationEventEditor />} />
+                <Route path="foundation/sponsors" element={<AdminFoundationSponsors />} />
+                <Route path="foundation/contributions" element={<AdminFoundationContributions />} />
+                <Route path="foundation/disbursements" element={<AdminFoundationDisbursements />} />
+                <Route path="foundation/progress-reports" element={<AdminFoundationProgressReports />} />
+              </Route>
             </Route>
-          </Route>
 
-          {/* LMS — instructor teaching tools */}
-          <Route element={<InstructorRoute />}>
-            <Route path="/teach" element={<TeachShell />}>
-              <Route index element={<TeachOverview />} />
-              <Route path="profile" element={<TeachProfile />} />
-              <Route path="courses" element={<MyCourses />} />
-              <Route path="create-course" element={<CreateCourse />} />
-              <Route path="students" element={<TeachStudents />} />
-              <Route path="materials" element={<LearningMaterials />} />
-              <Route path="assignments" element={<Assignments />} />
-              <Route path="assessments" element={<Assessments />} />
-              <Route path="sessions" element={<SessionsManager />} />
-              <Route path="messages" element={<TeachMessages />} />
-              <Route path="notifications" element={<TeachNotifications />} />
-              <Route path="settings" element={<TeachSettings />} />
-              <Route path="courses/:courseId" element={<CourseBuilder />} />
-              <Route path="lessons/:lessonId" element={<LessonContentBuilder />} />
-              <Route path="courses/:courseId/submissions" element={<Submissions />} />
-              <Route path="courses/:courseId/gradebook" element={<Gradebook />} />
+            {/* LMS — student learning (any authenticated user) */}
+            <Route element={<ProtectedRoute />}>
+              <Route path="/learn" element={<Suspense fallback={<PageFallback />}><LearnShell /></Suspense>}>
+                <Route index element={<LearnDashboard />} />
+                <Route path="career" element={<CareerProfile />} />
+                <Route path="applications" element={<MyApplications />} />
+                <Route path="sessions" element={<Sessions />} />
+                <Route path="calendar" element={<Calendar />} />
+                <Route path="portfolio" element={<Portfolio />} />
+                <Route path="goals" element={<Goals />} />
+                <Route path="projects" element={<Projects />} />
+                <Route path="mentorship" element={<Mentorship />} />
+                <Route path="certificates" element={<Certificates />} />
+                <Route path="courses/:courseId" element={<LearningPlayer />} />
+                <Route path="courses/:courseId/lessons/:lessonId" element={<LearningPlayer />} />
+                <Route path="assignments/:assignmentId" element={<AssignmentView />} />
+                <Route path="quizzes/:quizId" element={<QuizAttempt />} />
+              </Route>
             </Route>
-          </Route>
 
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
+            {/* LMS — instructor teaching tools */}
+            <Route element={<Suspense fallback={<PageFallback />}><InstructorRoute /></Suspense>}>
+              <Route path="/teach" element={<TeachShell />}>
+                <Route index element={<TeachOverview />} />
+                <Route path="profile" element={<TeachProfile />} />
+                <Route path="courses" element={<MyCourses />} />
+                <Route path="create-course" element={<CreateCourse />} />
+                <Route path="students" element={<TeachStudents />} />
+                <Route path="materials" element={<LearningMaterials />} />
+                <Route path="assignments" element={<Assignments />} />
+                <Route path="assessments" element={<Assessments />} />
+                <Route path="sessions" element={<SessionsManager />} />
+                <Route path="messages" element={<TeachMessages />} />
+                <Route path="notifications" element={<TeachNotifications />} />
+                <Route path="settings" element={<TeachSettings />} />
+                <Route path="courses/:courseId" element={<CourseBuilder />} />
+                <Route path="lessons/:lessonId" element={<LessonContentBuilder />} />
+                <Route path="courses/:courseId/submissions" element={<Submissions />} />
+                <Route path="courses/:courseId/gradebook" element={<Gradebook />} />
+              </Route>
+            </Route>
+
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
       </RouteErrorBoundary>
     </AuthProvider>
   );
